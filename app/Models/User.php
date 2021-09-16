@@ -10,23 +10,15 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
+    
+    //attributes name, is_admin
 
-    
-    public function getAdmin()
-    {
-        return $this->attributes['is_admin'];
-    }
-    
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'name',
         'email',
         'password',
         'is_admin',
+        
     ];
 
     /**
@@ -48,14 +40,49 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public static function isAdmin($user)
+    public function getAdmin()
     {
-        if($user->getAdmin() == 1)
-        {
-            return true;
-        }else{
-            return false;
-        }
+        return $this->attributes['is_admin'];
+    }
+
+    public function setAdmin($admin)
+    {
+        $this->attributes['is_admin'] = $admin;
+    }
+
+    public function getId()
+    {
+        return $this->attributes['id'];
+    }
+
+    public function setId($id)
+    {
+        $this->attributes['id'] = $id;
+    }
+
+    public function getName()
+    {
+        return $this->attributes['name'];
+    }
+
+    public function setName($name)
+    {
+        $this->attributes['name'] = $name;
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function wishlist()
+    {
+        return $this->BelongsTo(WishList::class);
     }
 
 }
