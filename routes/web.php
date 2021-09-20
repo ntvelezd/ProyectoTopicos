@@ -19,5 +19,6 @@ Route::get('/home', 'App\Http\Controllers\HomeController@index')->name("home.ind
 Route::get('/handbag/list', 'App\Http\Controllers\HandbagController@list')->name("handbag.list");
 Route::get('/admin/', 'App\Http\Controllers\Admin\AdminHomeController@index')->name("admin.home.index");
 Route::get('/admin/handbag/list', 'App\Http\Controllers\Admin\AdminHandbagController@list')->name("admin.handbag.list");
+Route::get('/admin/accesory/catalogue', 'App\Http\Controllers\Admin\AdminAccesoryController@catalogue')->name("admin.accesory.catalogue");
 Auth::routes();
 
