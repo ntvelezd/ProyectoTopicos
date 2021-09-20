@@ -25,4 +25,5 @@ class AdminAccesoryController extends Controller
     {
         return view('admin.accesory.catalogue');
     }
+    
 }
