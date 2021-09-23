@@ -10,8 +10,9 @@ use Illuminate\Http\Request;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
-    
+    use HasFactory;
+    use Notifiable;
+
     //attributes name, is_admin
 
     protected $fillable = [
@@ -19,7 +20,6 @@ class User extends Authenticatable
         'email',
         'password',
         'is_admin',
-        
     ];
 
     /**
@@ -118,5 +118,4 @@ class User extends Authenticatable
     {
         return $this->BelongsTo(WishList::class);
     }
-
 }

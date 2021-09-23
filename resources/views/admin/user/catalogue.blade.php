@@ -1,18 +1,18 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Admin View</div>
+                <div class="card-header">Users List</div>
 
                 <div class="card-body">
                     <table style="width:100% ; border-spacing: 5px ">
                         <tr>
-                            <th>id</th>
-                            <th>name</th>
-                            <th>email</th>
-                            <th>is_admin</th>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Is_admin</th>
                         </tr>
                         @foreach($data["users"] as $user)
                         <tr>
