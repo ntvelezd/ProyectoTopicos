@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
 
 class HandbagController extends Controller
@@ -12,5 +11,4 @@ class HandbagController extends Controller
     {
         return view('handbag.list');
     }
-
 }

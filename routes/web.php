@@ -19,7 +19,12 @@ Route::get('/', 'App\Http\Controllers\HomeController@index')->name("home.index")
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name("home.index");
 Route::get('/handbag/list', 'App\Http\Controllers\HandbagController@list')->name("handbag.list");
 Route::get('/admin/', 'App\Http\Controllers\Admin\AdminHomeController@index')->name("admin.home.index");
-Route::get('/admin/handbag/list', 'App\Http\Controllers\Admin\AdminHandbagController@list')->name("admin.handbag.list");
+Route::get('/admin/handbag/catalogue', 'App\Http\Controllers\Admin\AdminHandbagController@catalogue')->name("admin.handbag.catalogue");
+Route::get('/admin/handbag/create', 'App\Http\Controllers\Admin\AdminHandbagController@createUser')->name("admin.handbag.create");
+Route::post('/admin/handbag/delete', 'App\Http\Controllers\Admin\AdminHandbagController@deleteUser')->name("admin.handbag.delete");
+Route::get('/admin/handbag/edit/{id}', 'App\Http\Controllers\Admin\AdminHandbagController@editUser')->name("admin.handbag.edit");
+Route::post('/admin/handbag/save', 'App\Http\Controllers\Admin\AdminHandbagController@saveUser')->name("admin.handbag.save");
+Route::post('/admin/hanbag/saveEditUser', 'App\Http\Controllers\Admin\AdminHandbagController@saveEditUser')->name("admin.handbag.saveEditUser");
 Route::get('/admin/accesory/catalogue', 'App\Http\Controllers\Admin\AdminAccesoryController@catalogue')->name("admin.accesory.catalogue");
 Route::get('/admin/user/catalogue', 'App\Http\Controllers\Admin\AdminUserController@catalogue')->name("admin.user.catalogue");
 Route::get('/admin/user/create', 'App\Http\Controllers\Admin\AdminUserController@createUser')->name("admin.user.create");

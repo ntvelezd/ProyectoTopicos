@@ -29,7 +29,6 @@ class Item extends Model
     {
         $this->attributes['quantity'] = $quantity;
     }
-    
     public function order()
     {
         return $this->belongsTo(Order::class);
@@ -44,5 +43,4 @@ class Item extends Model
     {
         return $this->belongsTo(Accesory::class);
     }
-    
 }

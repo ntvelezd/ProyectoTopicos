@@ -6,7 +6,7 @@ use illuminate\Database\Eloquent\Model;
 
 class WishList extends Model
 {
-    //attributes score, comentary, handbag, user
+    //attributes user_id
 
     protected $fillable = ['user_id'];
 
