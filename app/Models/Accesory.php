@@ -8,7 +8,7 @@ class Accesory extends Model
 {
     //attributes name,price
 
-    protected $fillable = ['name,price'];
+    protected $fillable = ['name','price','image'];
 
     public function getId()
     {
@@ -40,7 +40,17 @@ class Accesory extends Model
         $this->attributes['price'] = $price;
     }
 
-    public function user()
+    public function getImage()
+    {
+        return $this->attributes['image'];
+    }
+
+    public function setImage($image)
+    {
+        $this->attributes['image'] = $image;
+    }
+
+    public function items()
     {
         return $this->HasMany(Item::class);
     }

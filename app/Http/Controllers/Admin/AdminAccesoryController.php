@@ -20,10 +20,9 @@ class AdminAccesoryController extends Controller
             return $next($request);
         });
     }
-    
+
     public function catalogue()
     {
         return view('admin.accesory.catalogue');
     }
-    
 }

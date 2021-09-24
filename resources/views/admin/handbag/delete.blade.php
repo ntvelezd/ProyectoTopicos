@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -7,7 +7,7 @@
                 <div class="card-header">Admin View</div>
 
                 <div class="card-body">
-                  Listas de bolsos
+                    delete user
                 </div>
             </div>
         </div>

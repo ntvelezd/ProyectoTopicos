@@ -38,7 +38,7 @@ class Review extends Model
     {
         $this->attributes['comentary'] = $comentary;
     }
-    public function items()
+    public function handbag()
     {
         return $this->belongsTo(Handbag::class);
     }
@@ -47,5 +47,4 @@ class Review extends Model
     {
         return $this->belongsTo(User::class);
     }
-
 }
