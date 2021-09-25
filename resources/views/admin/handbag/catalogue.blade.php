@@ -5,7 +5,6 @@
 
     <div class="album py-5 bg-light">
         <div class="container">
-
             <div class="row">
                 @foreach($data["handbags"] as $handbag)
                 <div class="col-md-4">
