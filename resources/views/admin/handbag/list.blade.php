@@ -1,9 +1,19 @@
+
+@extends('layouts.app')
+
 @extends('admin.layouts.app')
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
+
+                <div class="card-header">Admin View</div>
+
+                <div class="card-body">
+                  Listas de bolsos
+
                 <div class="card-header">Handbags List</div>
 
                 <div class="card-body">
@@ -45,4 +55,7 @@
         </div>
     </div>
 </div>
+
 @endsection
+@endsection
+
