@@ -1,35 +1,50 @@
 @extends('admin.layouts.app')
 @section('content')
+
+
 <div class="container">
+
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Admin View</div>
+            
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
+            <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                <form method="POST" action="{{ route('admin.user.save') }}">
+                    <h5 class="card-title">Create Handbag</h5>
+                    @if($errors->any())
+                    <ul id="errors">
+                        @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                    @endif
+                    <form method="POST" action="{{ route('admin.handbag.save') }}">
                         @csrf
-                        <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" class="form-control" placeholder="Insert Name" name="name" value="{{ old('name') }}">
-                        </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="text" class="form-control" placeholder="Insert Email" name="email" value="{{ old('email') }}">
-                        </div>
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input type="text" class="form-control" placeholder="Insert Password" name="password" value="{{ old('password') }}">
-                        </div>
-                        <div class="form-group">
-                            <label>Is_admin</label>
-                            <input type="text" class="form-control" placeholder="Are you admin?" name="is_admin" value="{{ old('is_admin') }}">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Crear</button>
+                        <input type="text" placeholder="Name" name="name" />
+                        <input type="text" placeholder="Price" name="price" />
+                        <input type="text" placeholder="Style" name="style" />
+                        <input type="text" placeholder="Color" name="color" />
+                        <input type="text" placeholder="Score" name="score" />
+                        <input type="text" placeholder="Texture" name="texture" />
+                        <input type="text" placeholder="Image" name="image" />
+                        <input type="submit" class="btn btn-primary" value="Submit" />
                     </form>
+
+
+
                 </div>
             </div>
+
+
         </div>
     </div>
+
+
+
 </div>
+
+
 @endsection

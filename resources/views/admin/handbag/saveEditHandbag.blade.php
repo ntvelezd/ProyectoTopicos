@@ -7,7 +7,7 @@
                 <div class="card-header">Admin View</div>
 
                 <div class="card-body">
-                    User edited :D
+                    Handbag edited :D
                 </div>
             </div>
         </div>
