@@ -27,10 +27,10 @@
                             <td>{{ $handbag->getTexture() }}</td>
                             <td>{{ $handbag->getImage() }}</td>
                             <td>
-                                <a href="edit/{{$handbag->getName()}}" class="btn btn-primary" role="button" aria-pressed="true">Edit Handbag</a>
+                                <a href="edit/{{$handbag->getId()}}" class="btn btn-primary" role="button" aria-pressed="true">Edit Handbag</a>
                             </td>
                             <td>
-                               <form method="POST" action="{{ route('admin.handbag.delete') }}">
+                                <form method="POST" action="{{ route('admin.handbag.delete') }}">
                                     @csrf
                                     <button type="submit" class="btn btn-primary" name="id" value="{{ ($handbag->getId()) }}">Delete</button>
 
@@ -42,6 +42,9 @@
 
                 </div>
             </div>
+            <a href="{{ URL::route('admin.home.index') }}">
+                <button class="btn btn-primary" type="button">Admin Home</button>
+            </a>
         </div>
     </div>
 </div>

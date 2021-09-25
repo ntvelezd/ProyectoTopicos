@@ -18,14 +18,14 @@
                             <p class="card-text">Score: {{ $handbag->getScore() }}</p>
                             <p class="card-text">Texture: {{ $handbag->getTexture() }}</p>
                             <div class="d-flex justify-content-between align-items-center">
-                               
-                                    <a href="edit/{{$handbag->getName()}}" class="btn btn-primary" role="button" aria-pressed="true">Edit</a>
-                                    <form method="POST" action="{{ route('admin.handbag.delete') }}">
-                                        @csrf
-                                        <button type="submit" class="btn btn-primary" name="id" value="{{ ($handbag->getId()) }}">Delete</button>
 
-                                    </form>
-                                
+                                <a href="edit/{{$handbag->getId()}}" class="btn btn-primary" role="button" aria-pressed="true">Edit</a>
+                                <form method="POST" action="{{ route('admin.handbag.delete') }}">
+                                    @csrf
+                                    <button type="submit" class="btn btn-primary" name="id" value="{{ ($handbag->getId()) }}">Delete</button>
+
+                                </form>
+
                                 <small class="text-muted">9 mins</small>
                             </div>
                         </div>
