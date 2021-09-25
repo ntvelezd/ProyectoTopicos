@@ -7,24 +7,15 @@
                 <div class="card-header">Admin View</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('admin.user.saveEditUser') }}">
+                    <form method="POST" action="{{ route('admin.handbag.saveEditHandbag') }}">
                         @csrf
-                        <input type="text" name="id" value="{{ $data['user']->getId()}}" hidden>
+                        <input type="text" name="name" value="{{ $data['handbag']->getName()}}" hidden>
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" class="form-control" placeholder="{{ $data['user']->getName() }}"
+                            <input type="text" class="form-control" placeholder="{{ $data['handbag']->getName() }}"
                                 name="name" value="{{ old('name') }}">
                         </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="text" class="form-control" placeholder="{{ $data['user']->getEmail() }}"
-                                name="email" value="{{ old('email') }}">
-                        </div>
-                        <div class="form-group">
-                            <label>Is_admin</label>
-                            <input type="text" class="form-control" placeholder="{{ $data['user']->getAdmin() }}"
-                                name="is_admin" value="{{ old('is_admin') }}">
-                        </div>
+                        
                         <button type="submit" class="btn btn-primary">Save Changes</button>
                     </form>
                 </div>

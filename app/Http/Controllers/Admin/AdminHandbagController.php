@@ -35,15 +35,21 @@ class AdminHandbagController extends Controller
 
     public function saveHandbag(Request $request)
     {
-        Handbag::validate(($request));
         Handbag::create($request->only(['name', 'price', 'style', 'color', 'score', 'texture', 'image']));
         $message = 'Bolso creado satisfactoriamente';
         return view('admin.handbag.save')->with("message", $message);
     }
-
-    public function editHandbag($id)
+    public function listHandbag()
     {
-        $handbag = Handbag::findOrFail($id);
+        $handbag = Handbag::all();
+        $data["title"] = "Handbags";
+        $data["handbags"] = $handbag;
+        return view('admin.handbag.list')->with("data", $data);
+    }
+
+    public function editHandbag($name)
+    {
+        $handbag = Handbag::findOrFail($name);
         $data["title"] = $handbag->getName();
         $data["handbag"] = $handbag;
         return view('admin.handbag.edit')->with("data", $data);
@@ -58,11 +64,9 @@ class AdminHandbagController extends Controller
         $message = 'Bolso editado satisfactoriamente';
         return view('admin.handbag.saveEditUser')->with("message", $message);
     }
-
     public function deleteHandbag(Request $request)
     {
         Handbag::destroy($request->only(["id"]));
-        $message = 'Bolso borrado satisfactoriamente';
-        return view('admin.hanbag.delete')->with("message", $message);
+        return view('admin.handbag.delete');
     }
 }
