@@ -7,7 +7,7 @@
                 <div class="card-header">Admin View</div>
 
                 <div class="card-body">
-                    delete user
+                    delete handbag
                 </div>
             </div>
         </div>
