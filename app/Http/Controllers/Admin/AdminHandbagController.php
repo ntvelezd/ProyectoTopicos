@@ -39,6 +39,7 @@ class AdminHandbagController extends Controller
         $message = 'Bolso creado satisfactoriamente';
         return view('admin.handbag.save')->with("message", $message);
     }
+
     public function listHandbag()
     {
         $handbag = Handbag::all();
