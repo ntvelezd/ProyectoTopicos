@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 class HandbagController extends Controller
 {
 
-    public function list()
+    public function catalogue()
     {
-        return view('handbag.list');
+        return view('handbag.catalogue');
     }
 }
