@@ -40,8 +40,6 @@ class AdminAccesoryController extends Controller
 
         Accesory::create($request->only(["name","price","image"]));
 
-        Accesory::create($request->only(["name","price","items"]));
-
         $message = 'Accesorio creado satisfactoriamente';
         return view('admin.accesory.save')->with("message", $message);
     }
@@ -57,15 +55,16 @@ class AdminAccesoryController extends Controller
     public function saveEditAccesory(Request $request)
     {
 
-        Accesory::validate(($request));
+        
 
         Accesory::validateEdit(($request));
 
         $accesory = Accesory::findOrFail($request['id']);
-        $accesory->fill($request->only(["name","price","items"]));
+        $accesory->fill($request->only(["name","price","image"]));
         $accesory->save();
         $message = 'Accesorio editado satisfactoriamente';
         return view('admin.accesory.saveEditAccesory')->with("message", $message);
+
     }
 
     public function deleteAccesory(Request $request)
