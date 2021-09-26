@@ -33,16 +33,14 @@ Route::post('/admin/user/delete', 'App\Http\Controllers\Admin\AdminUserControlle
 Route::get('/admin/user/edit/{id}', 'App\Http\Controllers\Admin\AdminUserController@editUser')->name("admin.user.edit");
 Route::post('/admin/user/save', 'App\Http\Controllers\Admin\AdminUserController@saveUser')->name("admin.user.save");
 Route::post('/admin/user/saveEditUser', 'App\Http\Controllers\Admin\AdminUserController@saveEditUser')->name("admin.user.saveEditUser");
-<<<<<<< Updated upstream
 Route::get('/cart/index', 'App\Http\Controllers\CartController@index')->name("cart.index");
 Route::get('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name("cart.add");
 Route::get('/cart/removeAll/', 'App\Http\Controllers\CartController@removeAll')->name("cart.removeAll");
-=======
 Route::get('/admin/accesory/create', 'App\Http\Controllers\Admin\AdminAccesoryController@createAccesory')->name("admin.accesory.create");
 Route::post('/admin/accesory/delete', 'App\Http\Controllers\Admin\AdminAccesoryController@deleteAccesory')->name("admin.accesory.delete");
 Route::get('/admin/accesory/edit/{id}', 'App\Http\Controllers\Admin\AdminAccesoryController@editAccesory')->name("admin.accesory.edit");
 Route::post('/admin/accesory/save', 'App\Http\Controllers\Admin\AdminAccesoryController@saveAccesory')->name("admin.accesory.save");
 Route::post('/admin/accesory/saveEditAccesory', 'App\Http\Controllers\Admin\AdminAccesoryController@saveEditAccesory')->name("admin.accesory.saveEditAccesory");
->>>>>>> Stashed changes
+
 Auth::routes();
 
