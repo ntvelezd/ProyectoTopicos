@@ -1,4 +1,4 @@
-<?php
++<?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -13,17 +13,14 @@ class CreateAccessoriesTable extends Migration
      */
     public function up()
     {
-
+        Schema::create('accessories', function (Blueprint $table) {
             //['name', 'price','image']
-            Schema::create('accessories', function (Blueprint $table){
             $table->bigIncrements('id');
             $table->text('name');
             $table->integer('price');
             $table->text('image');
             $table->timestamps();
-
-     });
-
+        });
     }
 
     /**
@@ -35,5 +32,4 @@ class CreateAccessoriesTable extends Migration
     {
         Schema::dropIfExists('accessories');
     }
-
 }

@@ -17,9 +17,9 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name("home.index");
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name("home.index");
-Route::get('/handbag/list', 'App\Http\Controllers\HandbagController@catalogue')->name("handbag.catalogue");
-Route::get('/admin/handbag/list', 'App\Http\Controllers\Admin\AdminHandbagController@listHandbag')->name("admin.handbag.list");
+Route::get('/handbag/catalogue', 'App\Http\Controllers\HandbagController@catalogue')->name("handbag.catalogue");
 Route::get('/admin/', 'App\Http\Controllers\Admin\AdminHomeController@index')->name("admin.home.index");
+Route::get('/admin/handbag/list', 'App\Http\Controllers\Admin\AdminHandbagController@listHandbag')->name("admin.handbag.list");
 Route::get('/admin/handbag/catalogue', 'App\Http\Controllers\Admin\AdminHandbagController@catalogue')->name("admin.handbag.catalogue");
 Route::get('/admin/handbag/create', 'App\Http\Controllers\Admin\AdminHandbagController@createHandbag')->name("admin.handbag.create");
 Route::post('/admin/handbag/delete', 'App\Http\Controllers\Admin\AdminHandbagController@deleteHandbag')->name("admin.handbag.delete");
@@ -36,6 +36,17 @@ Route::post('/admin/user/saveEditUser', 'App\Http\Controllers\Admin\AdminUserCon
 Route::get('/cart/index', 'App\Http\Controllers\CartController@index')->name("cart.index");
 Route::get('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name("cart.add");
 Route::get('/cart/removeAll/', 'App\Http\Controllers\CartController@removeAll')->name("cart.removeAll");
+
 Route::get('/admin/image/index', 'App\Http\Controllers\Admin\ImageController@index')->name("image.index");
 Route::post('/admin/image/save', 'App\Http\Controllers\Admin\ImageController@save')->name("image.save");
+
+
+Route::get('/admin/accesory/create', 'App\Http\Controllers\Admin\AdminAccesoryController@createAccesory')->name("admin.accesory.create");
+Route::post('/admin/accesory/delete', 'App\Http\Controllers\Admin\AdminAccesoryController@deleteAccesory')->name("admin.accesory.delete");
+Route::get('/admin/accesory/edit/{id}', 'App\Http\Controllers\Admin\AdminAccesoryController@editAccesory')->name("admin.accesory.edit");
+Route::post('/admin/accesory/save', 'App\Http\Controllers\Admin\AdminAccesoryController@saveAccesory')->name("admin.accesory.save");
+Route::post('/admin/accesory/saveEditAccesory', 'App\Http\Controllers\Admin\AdminAccesoryController@saveEditAccesory')->name("admin.accesory.saveEditAccesory");
+
 Auth::routes();
+
+

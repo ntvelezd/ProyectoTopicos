@@ -27,13 +27,15 @@
                             <td>{{ $handbag->getTexture() }}</td>
                             <td>{{ $handbag->getImage() }}</td>
                             <td>
+
                                 <a href="edit/{{$handbag->getId()}}" class="btn btn-primary" role="button" aria-pressed="true">Edit Handbag</a>
+
                             </td>
                             <td>
                                 <form method="POST" action="{{ route('admin.handbag.delete') }}">
                                     @csrf
-                                    <button type="submit" class="btn btn-primary" name="id" value="{{ ($handbag->getId()) }}">Delete</button>
-
+                                    <button type="submit" class="btn btn-primary" name="id"
+                                        value="{{ ($handbag->getId()) }}">Delete</button>
                                 </form>
                             </td>
                         </tr>
