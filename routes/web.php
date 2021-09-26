@@ -36,4 +36,6 @@ Route::post('/admin/user/saveEditUser', 'App\Http\Controllers\Admin\AdminUserCon
 Route::get('/cart/index', 'App\Http\Controllers\CartController@index')->name("cart.index");
 Route::get('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name("cart.add");
 Route::get('/cart/removeAll/', 'App\Http\Controllers\CartController@removeAll')->name("cart.removeAll");
+Route::get('/admin/image/index', 'App\Http\Controllers\Admin\ImageController@index')->name("image.index");
+Route::post('/admin/image/save', 'App\Http\Controllers\Admin\ImageController@save')->name("image.save");
 Auth::routes();

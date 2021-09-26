@@ -9,7 +9,7 @@
                 @foreach($data["handbags"] as $handbag)
                 <div class="col-md-4">
                     <div class="card mb-4 box-shadow">
-                        <img class="img-fluid rounded mb-5" src="{{ asset('/img/portfolio/cake.png') }}" alt="" />
+                        <img class="img-fluid rounded mb-5" src="{{  URL::asset('storage/handbags/'.$handbag->getImage()) }}" alt="" />
                         <div class="card-body">
                             <p class="card-text">Name: {{ $handbag->getName() }}</p>
                             <p class="card-text">Price: {{ $handbag->getPrice() }}</p>
