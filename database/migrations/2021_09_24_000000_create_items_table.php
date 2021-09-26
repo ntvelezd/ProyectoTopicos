@@ -19,9 +19,9 @@ class CreateItemsTable extends Migration
             $table->integer('quantity');
             $table->bigInteger('order_id',)->unsigned();
             $table->foreign('order_id')->references('id')->on('orders');
-            $table->bigInteger('handbag_id')->unsigned();
+            $table->bigInteger('handbag_id')->unsigned()->default(null);
             $table->foreign('handbag_id')->references('id')->on('handbags');
-            $table->bigInteger('accesory_id')->unsigned();
+            $table->bigInteger('accesory_id')->unsigned()->default(null);
             $table->foreign('accesory_id')->references('id')->on('accessories');
             $table->timestamps();
         });

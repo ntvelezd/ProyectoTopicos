@@ -25,6 +25,16 @@ class WishList extends Model
         return $this->hasMany(Handbag::class);
     }
 
+    public function getUserId()
+    {
+        return $this->attributes['user_id'];
+    }
+
+    public function setUserId($userId)
+    {
+        $this->attributes['user_id'] = $userId;
+    }
+
     public function user()
     {
         return $this->BelongsTo(User::class);

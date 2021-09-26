@@ -12,54 +12,78 @@ class CartController extends Controller
 
     public function index(Request $request)
     {
-        $data = []; //to be sent to the view
-        $listHandbags = Handbag::all();
-        $listHandbagsInCart = array();
-        $ids = $request->session()->get("handbags"); //obtenemos ids de productos guardados en session
+        $data = [];
+        $ids = $request->session()->get("handbags");
+        $quantify = $request->session()->get("quantifyHandbag");
         if ($ids) {
-            foreach ($listHandbags as $key => $handbag) {
-                if (in_array($key, array_keys($ids))) {
-                    $listHandbagsInCart[$key] = $handbag;
-                }
-            }
+            $data["handbags"] = Handbag::find(array_values($ids));
+            $data["quantifyHandbag"] = $quantify;
+            $data["total"] = Handbag::totalValue($data);
+        } else {
+            $data["handbags"] = array();
+            $data["quantifyHandbag"] = array();
+            $data["total"] = 0;
         }
-        $data["title"] = "Cart";
-        $data["handbagsInCart"] = $listHandbagsInCart;
         return view('cart.index')->with("data", $data);
-    }
-
-    public function add($idHandbag, Request $request)
-    {
-        if (is_null(auth()->user())) {
-            $message = 'you have to login to add products to the cart';
-            return redirect()->route('home.index')->with(['data' => $message ]);
-        }
-        $order = Order::where('user_id', auth()->user()->getId())->where('status', '=', 'in-process')->first();
-        //si no existe una orden que este en proceso, se crea una nueva orden.
-        if (is_null($order)) {
-            $order = Order::create([
-                'adress' => '',
-                'totalPrice' => 0,
-                'user_id' => auth()->user()->getId(),
-                'status' => 'in-process',
-            ]);
-        }
-        dd($order);
-        Item::create([
-            'adress' => '',
-            'totalPrice' => 0,
-            'user_id' => auth()->user()->getId(),
-            'status' => 'in-process',
-        ]);
-        $handbags = $request->session()->get("handbags");
-        $handbags[$idItem] = $idItem;
-        $request->session()->put('handbags', $handbags);
-        return back();
     }
 
     public function removeAll(Request $request)
     {
         $request->session()->forget('handbags');
         return back();
+    }
+
+    public function upQuantify($id, Request $request)
+    {
+        $data = [];
+        $quantify = $request->session()->get("quantifyHandbag");
+        $quantify[$id] += 1;
+        $request->session()->put('quantifyHandbag', $quantify);
+        return back();
+    }
+
+    public function downQuantify($id, Request $request)
+    {
+        $data = [];
+        $quantify = $request->session()->get("quantifyHandbag");
+        if ($quantify[$id] == 1) {
+            return back();
+        }
+        $quantify[$id] -= 1;
+        $request->session()->put('quantifyHandbag', $quantify);
+        return back();
+    }
+
+    public function buy(Request $request)
+    {
+        $data = [];
+        $request->validate(
+            [
+                "address" => "required",
+            ]
+        );
+        $ids = $request->session()->get("handbags");
+        $total = 0;
+        if ($ids) {
+            $order = new Order();
+            $order->setTotalPrice(0);
+            $order->setAdress($request->only(['address'])['address']);
+            $order->setUserId(auth()->user()->getId());
+            $order->save();
+            $handbags = Handbag::find(array_values($ids));
+            foreach ($handbags as $handbag) {
+                $item = new Item();
+                $item->setOrderId($order->getId());
+                $item->setHandbagId($handbag->getId());
+                $item->setQuantity($request->session()->get("quantifyHandbag")[$handbag->getId()]);
+                $total = $total + $handbag->getPrice();
+                $item->save();
+            }
+            $order->setTotalPrice($total);
+            $order->save();
+            dd($order->items()->get());
+        } else {
+            return back();
+        }
     }
 }

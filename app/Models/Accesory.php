@@ -62,7 +62,7 @@ class Accesory extends Model
         $this->attributes['image'] = $image;
     }
 
-    public function user()
+    public function items()
     {
         return $this->HasMany(Item::class);
     }

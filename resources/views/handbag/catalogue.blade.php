@@ -18,7 +18,7 @@
                             <p class="card-text">Texture: {{ $handbag->getTexture() }}</p>
                         </div>
                         <button type="submit" class="btn btn-primary" name="" value="">View Details</button>
-                        <a href="{{ route('cart.add', ['id'=> $key]) }}">Add Cart</a>
+                        <a href="{{ route('handbag.add', ['id'=> $handbag->getId()]) }}">Add Cart</a>
                     </div>
                 </div>
                 @endforeach
