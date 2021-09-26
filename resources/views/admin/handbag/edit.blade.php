@@ -15,7 +15,6 @@
                             <input type="text" class="form-control" placeholder="{{ $data['handbag']->getName() }}"
                                 name="name" value="{{ old('name') }}">
                         </div>
-                        
                         <button type="submit" class="btn btn-primary">Save Changes</button>
                     </form>
                 </div>

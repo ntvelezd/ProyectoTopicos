@@ -28,6 +28,7 @@ class AdminHandbagController extends Controller
         $data["handbags"] = $handbag;
         return view('admin.handbag.catalogue')->with("data", $data);
     }
+
     public function createHandbag()
     {
         return view('admin.handbag.create');
@@ -48,9 +49,9 @@ class AdminHandbagController extends Controller
         return view('admin.handbag.list')->with("data", $data);
     }
 
-    public function editHandbag($name)
+    public function editHandbag($id)
     {
-        $handbag = Handbag::findOrFail($name);
+        $handbag = Handbag::findOrFail($id);
         $data["title"] = $handbag->getName();
         $data["handbag"] = $handbag;
         return view('admin.handbag.edit')->with("data", $data);

@@ -17,9 +17,9 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name("home.index");
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name("home.index");
-Route::get('/handbag/list', 'App\Http\Controllers\HandbagController@catalogue')->name("handbag.catalogue");
-Route::get('/admin/handbag/list', 'App\Http\Controllers\Admin\AdminHandbagController@listHandbag')->name("admin.handbag.list");
+Route::get('/handbag/catalogue', 'App\Http\Controllers\HandbagController@catalogue')->name("handbag.catalogue");
 Route::get('/admin/', 'App\Http\Controllers\Admin\AdminHomeController@index')->name("admin.home.index");
+Route::get('/admin/handbag/list', 'App\Http\Controllers\Admin\AdminHandbagController@listHandbag')->name("admin.handbag.list");
 Route::get('/admin/handbag/catalogue', 'App\Http\Controllers\Admin\AdminHandbagController@catalogue')->name("admin.handbag.catalogue");
 Route::get('/admin/handbag/create', 'App\Http\Controllers\Admin\AdminHandbagController@createHandbag')->name("admin.handbag.create");
 Route::post('/admin/handbag/delete', 'App\Http\Controllers\Admin\AdminHandbagController@deleteHandbag')->name("admin.handbag.delete");
