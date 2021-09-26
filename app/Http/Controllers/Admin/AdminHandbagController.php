@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Handbag;
 
+
 class AdminHandbagController extends Controller
 {
 
@@ -64,7 +65,7 @@ class AdminHandbagController extends Controller
         $handbag->fill($request->only(['name', 'price', 'style', 'color', 'score', 'texture', 'image']));
         $handbag->save();
         $message = 'Bolso editado satisfactoriamente';
-        return view('admin.handbag.saveEditUser')->with("message", $message);
+        return view('admin.handbag.saveEditHandbag')->with("message", $message);
     }
     public function deleteHandbag(Request $request)
     {

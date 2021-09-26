@@ -2,11 +2,23 @@
 
 namespace App\Models;
 
+use Illuminate\Http\Request;
 use illuminate\Database\Eloquent\Model;
 
 class Accesory extends Model
 {
+    public static function validate(Request $request)
+    {
+        $request->validate(
+            [
+                "name" => "required",
+                "price" => "required",
+            ]
+        );
+    }
+
     //attributes name,price
+
 
     protected $fillable = ['name','price','image'];
 
@@ -50,7 +62,7 @@ class Accesory extends Model
         $this->attributes['image'] = $image;
     }
 
-    public function items()
+    public function user()
     {
         return $this->HasMany(Item::class);
     }

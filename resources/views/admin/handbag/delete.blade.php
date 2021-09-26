@@ -7,9 +7,15 @@
                 <div class="card-header">Admin View</div>
 
                 <div class="card-body">
-                    delete handbag
+                    Delete handbag :D
                 </div>
             </div>
+            <a href="{{ URL::route('admin.home.index') }}">
+                <button class="btn btn-primary" type="button">Admin Home</button>
+            </a>
+            <a href="{{ URL::route('admin.handbag.catalogue') }}">
+                <button class="btn btn-primary" type="button">Back to catalogue</button>
+            </a>
         </div>
     </div>
 </div>
