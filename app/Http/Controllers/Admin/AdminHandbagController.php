@@ -29,6 +29,7 @@ class AdminHandbagController extends Controller
         $data["handbags"] = $handbag;
         return view('admin.handbag.catalogue')->with("data", $data);
     }
+
     public function createHandbag()
     {
         return view('admin.handbag.create');

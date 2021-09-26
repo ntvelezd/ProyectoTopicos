@@ -19,6 +19,7 @@
                             <p class="card-text">Texture: {{ $handbag->getTexture() }}</p>
                             <div class="d-flex justify-content-between align-items-center">
 
+
                                 <a href="edit/{{$handbag->getId()}}" class="btn btn-primary" role="button" aria-pressed="true">Edit</a>
                                 <form method="POST" action="{{ route('admin.handbag.delete') }}">
                                     @csrf

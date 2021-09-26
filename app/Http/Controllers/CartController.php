@@ -3,59 +3,63 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Handbag;
+use App\Models\Item;
+use App\Models\Order;
 
 class CartController extends Controller
 {
 
     public function index(Request $request)
     {
-
         $data = []; //to be sent to the view
-
-        $listProducts = array();
-
-        $listProducts[121] = array("name" => "Tv samsung", "price" => "1000");
-
-        $listProducts[11] = array("name" => "Iphone", "price" => "2000");
-
-        $listProductsInCart = array();
-
-        $ids = $request->session()->get("products"); //obtenemos ids de productos guardados en session
-
+        $listHandbags = Handbag::all();
+        $listHandbagsInCart = array();
+        $ids = $request->session()->get("handbags"); //obtenemos ids de productos guardados en session
         if ($ids) {
-            foreach ($listProducts as $key => $product) {
+            foreach ($listHandbags as $key => $handbag) {
                 if (in_array($key, array_keys($ids))) {
-                    $listProductsInCart[$key] = $product;
+                    $listHandbagsInCart[$key] = $handbag;
                 }
             }
         }
-
         $data["title"] = "Cart";
-
-        $data["products"] = $listProducts;
-
-        $data["productsInCart"] = $listProductsInCart;
-
+        $data["handbagsInCart"] = $listHandbagsInCart;
         return view('cart.index')->with("data", $data);
     }
 
-    public function add($id, Request $request)
+    public function add($idHandbag, Request $request)
     {
-
-        $products = $request->session()->get("products");
-
-        $products[$id] = $id;
-
-        $request->session()->put('products', $products);
-
+        if (is_null(auth()->user())) {
+            $message = 'you have to login to add products to the cart';
+            return redirect()->route('home.index')->with(['data' => $message ]);
+        }
+        $order = Order::where('user_id', auth()->user()->getId())->where('status', '=', 'in-process')->first();
+        //si no existe una orden que este en proceso, se crea una nueva orden.
+        if (is_null($order)) {
+            $order = Order::create([
+                'adress' => '',
+                'totalPrice' => 0,
+                'user_id' => auth()->user()->getId(),
+                'status' => 'in-process',
+            ]);
+        }
+        dd($order);
+        Item::create([
+            'adress' => '',
+            'totalPrice' => 0,
+            'user_id' => auth()->user()->getId(),
+            'status' => 'in-process',
+        ]);
+        $handbags = $request->session()->get("handbags");
+        $handbags[$idItem] = $idItem;
+        $request->session()->put('handbags', $handbags);
         return back();
     }
 
     public function removeAll(Request $request)
     {
-
-        $request->session()->forget('products');
-
+        $request->session()->forget('handbags');
         return back();
     }
 }

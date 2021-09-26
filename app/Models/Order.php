@@ -8,7 +8,7 @@ class Order extends Model
 {
     //attributes adress,totalPrice, user_id
 
-    protected $fillable = ['adress','totalPrice','user_id'];
+    protected $fillable = ['adress','totalPrice','status','user_id'];
 
     public function getId()
     {
@@ -38,6 +38,17 @@ class Order extends Model
     {
         $this->attributes['totalPrice'] = $totalPrice;
     }
+
+    public function getTStatus()
+    {
+        return $this->attributes['status'];
+    }
+
+    public function setStatus($status)
+    {
+        $this->attributes['status'] = $status;
+    }
+
     public function handag()
     {
         return $this->hasMany(Handbag::class);
