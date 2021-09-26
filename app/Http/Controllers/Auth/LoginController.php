@@ -19,7 +19,6 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-
     use AuthenticatesUsers;
 
     /**
@@ -35,7 +34,7 @@ class LoginController extends Controller
      * @return void
      */
     public function __construct()
-    {   
+    {
         $this->middleware('guest')->except('logout');
     }
 
@@ -46,17 +45,14 @@ class LoginController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-
-    if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
-    {
-            if(auth()->user()->getAdmin() == 0){
+        if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))) {
+            if (auth()->user()->getAdmin() == 0) {
                 return redirect()->route('home.index');
-            }else{
+            } else {
                 return redirect()->route('admin.home.index');
             }
-    }else{
-        return redirect()->route('login')->with('error','Email-Address And Password Are Wrong');
-    }
-
+        } else {
+            return redirect()->route('login')->with('error', 'Email-Address And Password Are Wrong');
+        }
     }
 }

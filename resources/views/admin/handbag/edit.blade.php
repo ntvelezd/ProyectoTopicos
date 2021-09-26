@@ -15,6 +15,8 @@
                             <input type="text" class="form-control" placeholder="{{ $data['handbag']->getName() }}"
                                 name="name" value="{{ old('name') }}">
                         </div>
+
+
                         <div class="form-group">
                             <label>Price</label>
                             <input type="text" class="form-control" placeholder="{{ $data['handbag']->getPrice() }}"

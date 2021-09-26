@@ -1,6 +1,13 @@
 @extends('layouts.app')
 @section('content')
 <!-- Portfolio Section-->
+
+@if(session()->get('data') != '')
+<div class="alert alert-danger " role="alert-block">
+    <h4 class="alert-heading text-center">ERROR!</h4>
+    <h4 class="alert-heading text-center">{{ session()->get('data') }}</h4>
+</div>
+@endif
 <section class="page-section portfolio" id="portfolio">
     <div class="container">
         <!-- Portfolio Section Heading-->
@@ -26,7 +33,8 @@
                     <a class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100 btn"
                         href="{{ route('handbag.catalogue') }}">
                     </a>
-                    <img class="img-fluid" src="{{ asset('/img/portfolio/user.png') }}" alt="" />
+
+                    <img class="img-fluid" src="{{ asset('/img/portfolio/handbag.png') }}" alt="" />
 
                 </div>
             </div>

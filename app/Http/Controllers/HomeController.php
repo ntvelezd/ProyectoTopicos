@@ -12,12 +12,14 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('home.index');
+        $data['message'] = '';
+        return view('home.index')->with("data", $data);
     }
 
     public function home()
     {
-        return redirect()->route('home.index');
+        $data['message'] = '';
+        return redirect()->route('home.index')->with("data", $data);
     }
     public function portfolio()
     {
