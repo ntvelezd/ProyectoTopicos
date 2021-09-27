@@ -7,7 +7,10 @@
                 @foreach($data["Accesory"] as $accesory)
                 <div class="col-md-4">
                     <div class="card mb-4 box-shadow">
-                        <img class="img-fluid rounded mb-5" src="{{ asset('/img/portfolio/cake.png') }}" alt="" />
+
+                    <img class="img-fluid rounded mb-5" src="{{  URL::asset('storage/accesories/'.$accesory->getImage()) }}" alt="" />
+
+
                         <div class="card-body">
                             <p class="card-text">Name: {{ $accesory->getName() }}</p>
                             <p class="card-text">Price: {{ $accesory->getPrice() }}</p>
@@ -17,14 +20,11 @@
                                     <button type="submit" class="btn btn-primary" name="id"
                                         value="{{ ($accesory->getId()) }}">Delete</button>
                                 </form>
-                                <form method="POST" action="{{ route('admin.accesory.saveEditAccesory') }}">
-                                    @csrf
-                                    <button type="submit" class="btn btn-primary" name="id"
-                                        value="{{ ($accesory->getId()) }}">Edit</button>
-                                </form>
-                                <small class="text-muted">9 mins</small>
+                                
+                                <a href="{{ route('admin.accesory.edit', ['id'=> $accesory->getId()]) }}" class="btn btn-primary" role="button" aria-pressed="true">Edit</a>
                             </div>
                         </div>
+                                
                     </div>
                 </div>
                 @endforeach

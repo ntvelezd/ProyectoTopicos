@@ -26,8 +26,6 @@
                                     <button type="submit" class="btn btn-primary" name="id" value="{{ ($handbag->getId()) }}">Delete</button>
 
                                 </form>
-
-                                <small class="text-muted">9 mins</small>
                             </div>
                         </div>
                     </div>
