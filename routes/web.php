@@ -47,4 +47,5 @@ Route::post('/admin/accesory/saveEditAccesory', 'App\Http\Controllers\Admin\Admi
 Route::get('/review/{id}', 'App\Http\Controllers\ReviewController@index')->name("review.index");
 Route::post('/review/save', 'App\Http\Controllers\ReviewController@save')->name("review.save");
 Route::get('/review/catalogue/{id}', 'App\Http\Controllers\ReviewController@catalogue')->name("review.catalogue");
+Route::get('/wishlist', 'App\Http\Controllers\WishlistController@index')->name("wishlist.index");
 Auth::routes();

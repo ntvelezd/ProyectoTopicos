@@ -1,10 +1,10 @@
-+<?php
+<?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAccessoriesTable extends Migration
+class CreateWishlistsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateAccessoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('accessories', function (Blueprint $table) {
-            //['name', 'price','image']
+        Schema::create('wish_lists', function (Blueprint $table) {
+            //['score','comentary','handbag_id','user_id']
             $table->bigIncrements('id');
-            $table->text('name');
-            $table->integer('price');
-            $table->text('image');
+            $table->bigInteger('user_id',)->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateAccessoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('accessories');
+        Schema::dropIfExists('wish_lists');
     }
 }
