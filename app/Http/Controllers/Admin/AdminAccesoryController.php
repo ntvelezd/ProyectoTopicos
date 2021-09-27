@@ -52,14 +52,12 @@ class AdminAccesoryController extends Controller
 
     public function saveEditAccesory(Request $request)
     {
-
         Accesory::validate(($request));
         $accesory = Accesory::findOrFail($request['id']);
         $accesory->fill($request->only(["name","price","image"]));
         $accesory->save();
         $message = 'Accesorio editado satisfactoriamente';
         return view('admin.accesory.saveEditAccesory')->with("message", $message);
-
     }
 
     public function deleteAccesory(Request $request)

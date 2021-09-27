@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Handbag;
 use App\Models\Item;
 use App\Models\Order;
+use App\Models\Accesory;
 
 class CartController extends Controller
 {
@@ -24,6 +25,17 @@ class CartController extends Controller
             $data["quantifyHandbag"] = array();
             $data["total"] = 0;
         }
+        $ids = $request->session()->get("accesories");
+        $quantify = $request->session()->get("quantifyAccesory");
+        if ($ids) {
+            $data["accesories"] = Accesory::find(array_values($ids));
+            $data["quantifyAccesory"] = $quantify;
+            $data["total"] += Accesory::totalValue($data);
+        } else {
+            $data["handbags"] = array();
+            $data["quantifyHandbag"] = array();
+            $data["total"] = 0;
+        }
         return view('cart.index')->with("data", $data);
     }
 
@@ -35,23 +47,42 @@ class CartController extends Controller
 
     public function upQuantify($id, Request $request)
     {
-        $data = [];
-        $quantify = $request->session()->get("quantifyHandbag");
-        $quantify[$id] += 1;
-        $request->session()->put('quantifyHandbag', $quantify);
-        return back();
+        if (str_starts_with($id, 'a')) {
+            $data = [];
+            $quantify = $request->session()->get("quantifyAccesory");
+            $quantify[substr($id, 1)] += 1;
+            $request->session()->put('quantifyAccesory', $quantify);
+            return back();
+        } else {
+            $data = [];
+            $quantify = $request->session()->get("quantifyHandbag");
+            $quantify[substr($id, 1)] += 1;
+            $request->session()->put('quantifyHandbag', $quantify);
+            return back();
+        }
     }
 
     public function downQuantify($id, Request $request)
     {
-        $data = [];
-        $quantify = $request->session()->get("quantifyHandbag");
-        if ($quantify[$id] == 1) {
+        if (str_starts_with($id, 'a')) {
+            $data = [];
+            $quantify = $request->session()->get("quantifyAccesory");
+            if ($quantify[substr($id, 1)] == 1) {
+                return back();
+            }
+            $quantify[substr($id, 1)] -= 1;
+            $request->session()->put('quantifyAccesory', $quantify);
+            return back();
+        } else {
+            $data = [];
+            $quantify = $request->session()->get("quantifyHandbag");
+            if ($quantify[substr($id, 1)] == 1) {
+                return back();
+            }
+            $quantify[substr($id, 1)] -= 1;
+            $request->session()->put('quantifyHandbag', $quantify);
             return back();
         }
-        $quantify[$id] -= 1;
-        $request->session()->put('quantifyHandbag', $quantify);
-        return back();
     }
 
     public function buy(Request $request)
@@ -62,22 +93,36 @@ class CartController extends Controller
                 "address" => "required",
             ]
         );
-        $ids = $request->session()->get("handbags");
+        $idshandbag = $request->session()->get("handbags");
+        $idsaccesory = $request->session()->get("accesories");
         $total = 0;
-        if ($ids) {
+        if ($idshandbag or $idsaccesory) {
             $order = new Order();
             $order->setTotalPrice(0);
             $order->setAdress($request->only(['address'])['address']);
             $order->setUserId(auth()->user()->getId());
             $order->save();
-            $handbags = Handbag::find(array_values($ids));
-            foreach ($handbags as $handbag) {
-                $item = new Item();
-                $item->setOrderId($order->getId());
-                $item->setHandbagId($handbag->getId());
-                $item->setQuantity($request->session()->get("quantifyHandbag")[$handbag->getId()]);
-                $total = $total + $handbag->getPrice();
-                $item->save();
+            if ($idshandbag) {
+                $handbags = Handbag::find(array_values($idshandbag));
+                foreach ($handbags as $handbag) {
+                    $item = new Item();
+                    $item->setOrderId($order->getId());
+                    $item->setHandbagId($handbag->getId());
+                    $item->setQuantity($request->session()->get("quantifyHandbag")[$handbag->getId()]);
+                    $total = $total + ($handbag->getPrice() * $item->getQuantity());
+                    $item->save();
+                }
+            }
+            if ($idsaccesory) {
+                $accesories = Accesory::find(array_values($idsaccesory));
+                foreach ($accesories as $accesory) {
+                    $item = new Item();
+                    $item->setOrderId($order->getId());
+                    $item->setAccesoryId($accesory->getId());
+                    $item->setQuantity($request->session()->get("quantifyAccesory")[$accesory->getId()]);
+                    $total = $total + ($accesory->getPrice() * $item->getQuantity());
+                    $item->save();
+                }
             }
             $order->setTotalPrice($total);
             $order->save();

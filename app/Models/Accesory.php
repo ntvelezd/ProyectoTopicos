@@ -23,7 +23,6 @@ class Accesory extends Model
             [
                 "name" => "required",
                 "price" => "required",
-                
             ]
         );
     }
@@ -76,5 +75,14 @@ class Accesory extends Model
     public function items()
     {
         return $this->HasMany(Item::class);
+    }
+
+    public static function totalValue($accesories)
+    {
+        $total = 0;
+        foreach ($accesories["accesories"] as $accesory) {
+            $total = $total + ($accesory->getPrice() * $accesories["quantifyAccesory"][$accesory->getId()]);
+        }
+        return $total;
     }
 }
