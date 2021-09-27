@@ -117,12 +117,10 @@ class Handbag extends Model
                 "price" => "required|numeric|gt:0",
                 "style" => "required",
                 "color" => "required",
-                "score" => "required|numeric",
+                "score" => "required|numeric|between:0,5",
                 "texture" => "required",
-                "image" => "required"
-            ]
-        );
-    }
+                "profile_image" => "required"
+
 
     public static function validateEdit(Request $request)
     {

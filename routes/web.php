@@ -46,4 +46,7 @@ Route::post('/admin/accesory/delete', 'App\Http\Controllers\Admin\AdminAccesoryC
 Route::get('/admin/accesory/edit/{id}', 'App\Http\Controllers\Admin\AdminAccesoryController@editAccesory')->name("admin.accesory.edit");
 Route::post('/admin/accesory/save', 'App\Http\Controllers\Admin\AdminAccesoryController@saveAccesory')->name("admin.accesory.save");
 Route::post('/admin/accesory/saveEditAccesory', 'App\Http\Controllers\Admin\AdminAccesoryController@saveEditAccesory')->name("admin.accesory.saveEditAccesory");
+Route::get('/review/{id}', 'App\Http\Controllers\ReviewController@index')->name("review.index");
+Route::post('/review/save', 'App\Http\Controllers\ReviewController@save')->name("review.save");
+Route::get('/review/catalogue/{id}', 'App\Http\Controllers\ReviewController@catalogue')->name("review.catalogue");
 Auth::routes();

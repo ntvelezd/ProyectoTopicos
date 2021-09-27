@@ -12,7 +12,8 @@ class Accesory extends Model
         $request->validate(
             [
                 "name" => "required",
-                "price" => "required",
+                "price" => "required|numeric|gt:0",
+                "profile_image"=>"required"
             ]
         );
     }
@@ -22,7 +23,9 @@ class Accesory extends Model
         $request->validate(
             [
                 "name" => "required",
-                "price" => "required",
+                "price" => "required|numeric|gt:0",
+                "profile_image"=>"required"
+
             ]
         );
     }
