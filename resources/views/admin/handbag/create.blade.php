@@ -21,7 +21,7 @@
                         @endforeach
                     </ul>
                     @endif
-                    <form method="POST" action="{{ route('admin.handbag.save') }}">
+                    <form method="POST" action="{{ route('admin.handbag.save') }}" enctype="multipart/form-data">
                         @csrf
                         <input type="text" placeholder="Name" name="name" />
                         <input type="number" placeholder="Price" name="price" />
@@ -33,7 +33,7 @@
                             <label>Image:</label>
                             <input type="file" name="profile_image" />
                         </div>
-                        <input type="submit" class="btn btn-primary" value="Submit" />
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
 
 

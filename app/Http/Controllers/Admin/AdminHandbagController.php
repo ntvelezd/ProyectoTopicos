@@ -37,6 +37,8 @@ class AdminHandbagController extends Controller
 
     public function saveHandbag(Request $request)
     {
+        $storeInterface = app(ImageStorage::class);
+        $storeInterface->store($request);
         Handbag::create([
             'name' => $request->only(["name"])["name"],
             'price' => $request->only(["price"])["price"],
@@ -44,10 +46,8 @@ class AdminHandbagController extends Controller
             'color' => $request->only(["color"])["color"],
             'score' => $request->only(["score"])["score"],
             'texture' => $request->only(["texture"])["texture"],
-            'image' => $request->only(["profile_image"])["profile_image"],
+            'image' => $request->only(["profile_image"])["profile_image"]->getClientOriginalName(),
         ]);
-        $storeInterface = app(ImageStorage::class);
-        $storeInterface->store($request);
         $message = 'Bolso creado satisfactoriamente';
         return view('admin.handbag.save')->with("message", $message);
     }
