@@ -115,10 +115,26 @@ class Handbag extends Model
                 "price" => "required|numeric|gt:0",
                 "style" => "required",
                 "color" => "required",
-                "score" => "required|numeric",
+                "score" => "required|numeric|between:0,5",
                 "texture" => "required",
+<<<<<<< Updated upstream
                 "image" => "required"
             ]
         );
     }
+=======
+                "profile_image" => "required"
+            ]
+        );
+    }
+
+    public static function totalValue($handbags)
+    {
+        $total = 0;
+        foreach ($handbags["handbags"] as $handbag) {
+            $total = $total + ($handbag->getPrice() * $handbags["quantifyHandbag"][$handbag->getId()]);
+        }
+        return $total;
+    }
+>>>>>>> Stashed changes
 }

@@ -6,6 +6,21 @@ use illuminate\Database\Eloquent\Model;
 
 class Accesory extends Model
 {
+<<<<<<< Updated upstream
+=======
+    public static function validate(Request $request)
+    {
+        $request->validate(
+            [
+                "name" => "required",
+                "price" => "required|numeric|gt:0",
+                "profile_image"=>"required"
+            ]
+        );
+    }
+
+
+>>>>>>> Stashed changes
     //attributes name,price
 
     protected $fillable = ['name','price','image'];

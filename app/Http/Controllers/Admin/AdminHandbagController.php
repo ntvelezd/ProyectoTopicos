@@ -35,7 +35,22 @@ class AdminHandbagController extends Controller
 
     public function saveHandbag(Request $request)
     {
+<<<<<<< Updated upstream
         Handbag::create($request->only(['name', 'price', 'style', 'color', 'score', 'texture', 'image']));
+=======
+        $storeInterface = app(ImageStorage::class);
+        $storeInterface->store($request);
+        Handbag::validate($request);
+        Handbag::create([
+            'name' => $request->only(["name"])["name"],
+            'price' => $request->only(["price"])["price"],
+            'style' => $request->only(["style"])["style"],
+            'color' => $request->only(["color"])["color"],
+            'score' => $request->only(["score"])["score"],
+            'texture' => $request->only(["texture"])["texture"],
+            'image' => $request->only(["profile_image"])["profile_image"]->getClientOriginalName(),
+        ]);
+>>>>>>> Stashed changes
         $message = 'Bolso creado satisfactoriamente';
         return view('admin.handbag.save')->with("message", $message);
     }
@@ -57,9 +72,13 @@ class AdminHandbagController extends Controller
 
     public function saveEditHandbag(Request $request)
     {
-        Handbag::validateEdit(($request));
+
+        $storeInterface = app(ImageStorage::class);
+        $storeInterface->store($request);
+        Handbag::validate($request);
         $handbag = Handbag::findOrFail($request['id']);
-        $handbag->fill($request->only(['name', 'price', 'style', 'color', 'score', 'texture', 'image']));
+        $handbag->fill($request->only(['name', 'price', 'style', 'color', 'score', 'texture']));
+        $handbag->setImage($request->only(["profile_image"])["profile_image"]->getClientOriginalName());
         $handbag->save();
         $message = 'Bolso editado satisfactoriamente';
         return view('admin.handbag.saveEditUser')->with("message", $message);

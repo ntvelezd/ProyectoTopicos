@@ -18,6 +18,7 @@
                             <p class="card-text">Score: {{ $handbag->getScore() }}</p>
                             <p class="card-text">Texture: {{ $handbag->getTexture() }}</p>
                             <div class="d-flex justify-content-between align-items-center">
+<<<<<<< Updated upstream
                                
                                     <a href="edit/{{$handbag->getName()}}" class="btn btn-primary" role="button" aria-pressed="true">Edit</a>
                                     <form method="POST" action="{{ route('admin.handbag.delete') }}">
@@ -27,6 +28,16 @@
                                     </form>
                                 
                                 <small class="text-muted">9 mins</small>
+=======
+
+
+                                <a href="edit/{{$handbag->getId()}}" class="btn btn-primary" role="button" aria-pressed="true">Edit</a>
+                                <form method="POST" action="{{ route('admin.handbag.delete') }}">
+                                    @csrf
+                                    <button type="submit" class="btn btn-primary" name="id" value="{{ ($handbag->getId()) }}">Delete</button>
+
+                                </form>
+>>>>>>> Stashed changes
                             </div>
                         </div>
                     </div>

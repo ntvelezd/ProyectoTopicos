@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Accesory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Interfaces\ImageStorage;
 use App\Models\User;
 
 class AdminAccesoryController extends Controller
@@ -36,8 +37,19 @@ class AdminAccesoryController extends Controller
 
     public function saveAccesory(Request $request)
     {
+<<<<<<< Updated upstream
         Accesory::validate(($request));
         Accesory::create($request->only(["name","price","items"]));
+=======
+        $storeInterface = app(ImageStorage::class);
+        $storeInterface->storeAccesory($request);
+        Accesory::validate($request);
+        Accesory::create([
+            'name' => $request->only(["name"])["name"],
+            'price' => $request->only(["price"])["price"],
+            'image' => $request->only(["profile_image"])["profile_image"]->getClientOriginalName(),
+        ]);
+>>>>>>> Stashed changes
         $message = 'Accesorio creado satisfactoriamente';
         return view('admin.accesory.save')->with("message", $message);
     }
@@ -52,9 +64,19 @@ class AdminAccesoryController extends Controller
 
     public function saveEditAccesory(Request $request)
     {
+<<<<<<< Updated upstream
         Accesory::validateEdit(($request));
         $accesory = Accesory::findOrFail($request['id']);
         $accesory->fill($request->only(["name","price","items"]));
+=======
+
+        $storeInterface = app(ImageStorage::class);
+        $storeInterface->storeAccesory($request);
+        Accesory::validate($request);
+        $accesory = Accesory::findOrFail($request['id']);
+        $accesory->fill($request->only(["name","price"]));
+        $accesory->setImage($request->only(["profile_image"])["profile_image"]->getClientOriginalName());
+>>>>>>> Stashed changes
         $accesory->save();
         $message = 'Accesorio editado satisfactoriamente';
         return view('admin.accesory.saveEditAccesory')->with("message", $message);
