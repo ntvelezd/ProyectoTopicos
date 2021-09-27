@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Handbag;
+use App\Interfaces\ImageStorage;
 
 class AdminHandbagController extends Controller
 {
@@ -28,6 +29,7 @@ class AdminHandbagController extends Controller
         $data["handbags"] = $handbag;
         return view('admin.handbag.catalogue')->with("data", $data);
     }
+
     public function createHandbag()
     {
         return view('admin.handbag.create');
@@ -35,12 +37,9 @@ class AdminHandbagController extends Controller
 
     public function saveHandbag(Request $request)
     {
-<<<<<<< Updated upstream
-        Handbag::create($request->only(['name', 'price', 'style', 'color', 'score', 'texture', 'image']));
-=======
+
         $storeInterface = app(ImageStorage::class);
         $storeInterface->store($request);
-        Handbag::validate($request);
         Handbag::create([
             'name' => $request->only(["name"])["name"],
             'price' => $request->only(["price"])["price"],
@@ -50,10 +49,10 @@ class AdminHandbagController extends Controller
             'texture' => $request->only(["texture"])["texture"],
             'image' => $request->only(["profile_image"])["profile_image"]->getClientOriginalName(),
         ]);
->>>>>>> Stashed changes
         $message = 'Bolso creado satisfactoriamente';
         return view('admin.handbag.save')->with("message", $message);
     }
+
     public function listHandbag()
     {
         $handbag = Handbag::all();
@@ -62,9 +61,9 @@ class AdminHandbagController extends Controller
         return view('admin.handbag.list')->with("data", $data);
     }
 
-    public function editHandbag($name)
+    public function editHandbag($id)
     {
-        $handbag = Handbag::findOrFail($name);
+        $handbag = Handbag::findOrFail($id);
         $data["title"] = $handbag->getName();
         $data["handbag"] = $handbag;
         return view('admin.handbag.edit')->with("data", $data);
@@ -81,7 +80,7 @@ class AdminHandbagController extends Controller
         $handbag->setImage($request->only(["profile_image"])["profile_image"]->getClientOriginalName());
         $handbag->save();
         $message = 'Bolso editado satisfactoriamente';
-        return view('admin.handbag.saveEditUser')->with("message", $message);
+        return view('admin.handbag.saveEditHandbag')->with("message", $message);
     }
     public function deleteHandbag(Request $request)
     {

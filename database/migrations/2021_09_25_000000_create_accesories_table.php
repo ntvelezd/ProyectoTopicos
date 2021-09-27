@@ -1,10 +1,10 @@
-<?php
++<?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOrdersTable extends Migration
+class CreateAccessoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
-            //['adress','totalPrice','status','user_id']
+        Schema::create('accessories', function (Blueprint $table) {
+            //['name', 'price','image']
             $table->bigIncrements('id');
-            $table->text('adress');
-            $table->integer('totalPrice');
-            $table->bigInteger('user_id',)->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->text('name');
+            $table->integer('price');
+            $table->text('image');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('accessories');
     }
 }

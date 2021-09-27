@@ -38,6 +38,27 @@ class Review extends Model
     {
         $this->attributes['comentary'] = $comentary;
     }
+
+    public function getHandbagId()
+    {
+        return $this->attributes['handbag_id'];
+    }
+
+    public function setHandbagId($handbagId)
+    {
+        $this->attributes['handbag_id'] = $handbagId;
+    }
+
+    public function getUserId()
+    {
+        return $this->attributes['user_id'];
+    }
+
+    public function setUserId($userId)
+    {
+        $this->attributes['user_id'] = $userId;
+    }
+
     public function handbag()
     {
         return $this->belongsTo(Handbag::class);

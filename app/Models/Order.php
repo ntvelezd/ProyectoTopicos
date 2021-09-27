@@ -29,6 +29,7 @@ class Order extends Model
     {
         $this->attributes['adress'] = $adress;
     }
+
     public function getTotalPrice()
     {
         return $this->attributes['totalPrice'];
@@ -38,9 +39,20 @@ class Order extends Model
     {
         $this->attributes['totalPrice'] = $totalPrice;
     }
-    public function handag()
+
+    public function getUserId()
     {
-        return $this->hasMany(Handbag::class);
+        return $this->attributes['user_id'];
+    }
+
+    public function setUserId($userId)
+    {
+        $this->attributes['user_id'] = $userId;
+    }
+
+    public function items()
+    {
+        return $this->hasMany(Item::class);
     }
 
     public function user()

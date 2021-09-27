@@ -2,12 +2,11 @@
 
 namespace App\Models;
 
+use Illuminate\Http\Request;
 use illuminate\Database\Eloquent\Model;
 
 class Accesory extends Model
 {
-<<<<<<< Updated upstream
-=======
     public static function validate(Request $request)
     {
         $request->validate(
@@ -19,9 +18,8 @@ class Accesory extends Model
         );
     }
 
-
->>>>>>> Stashed changes
     //attributes name,price
+
 
     protected $fillable = ['name','price','image'];
 

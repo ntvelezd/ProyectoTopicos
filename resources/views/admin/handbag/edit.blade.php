@@ -9,15 +9,12 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('admin.handbag.saveEditHandbag') }}" enctype="multipart/form-data">
                         @csrf
-                        <input type="text" name="name" value="{{ $data['handbag']->getName()}}" hidden>
+                        <input type="text" name="id" value="{{ $data['handbag']->getId()}}" hidden>
                         <div class="form-group">
                             <label>Name</label>
                             <input type="text" class="form-control" placeholder="{{ $data['handbag']->getName() }}"
                                 name="name" value="{{ old('name') }}">
                         </div>
-<<<<<<< Updated upstream
-                        
-=======
 
 
                         <div class="form-group">
@@ -49,7 +46,7 @@
                             <label>Image:</label>
                             <input type="file" name="profile_image" />
                         </div>
->>>>>>> Stashed changes
+
                         <button type="submit" class="btn btn-primary">Save Changes</button>
                     </form>
                 </div>

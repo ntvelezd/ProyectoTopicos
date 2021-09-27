@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class Handbag extends Model
 {
@@ -107,6 +108,7 @@ class Handbag extends Model
     {
         return $this->hasMany(WishList::class);
     }
+
     public static function validate(Request $request)
     {
         $request->validate(
@@ -117,13 +119,20 @@ class Handbag extends Model
                 "color" => "required",
                 "score" => "required|numeric|between:0,5",
                 "texture" => "required",
-<<<<<<< Updated upstream
-                "image" => "required"
-            ]
-        );
-    }
-=======
                 "profile_image" => "required"
+
+
+    public static function validateEdit(Request $request)
+    {
+        $request->validate(
+            [
+                "name" => "required",
+                "price" => "required|numeric|gt:0",
+                "style" => "required",
+                "color" => "required",
+                "score" => "required|numeric",
+                "texture" => "required",
+                "image" => "required"
             ]
         );
     }
@@ -136,5 +145,4 @@ class Handbag extends Model
         }
         return $total;
     }
->>>>>>> Stashed changes
 }

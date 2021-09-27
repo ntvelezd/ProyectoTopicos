@@ -37,10 +37,7 @@ class AdminAccesoryController extends Controller
 
     public function saveAccesory(Request $request)
     {
-<<<<<<< Updated upstream
-        Accesory::validate(($request));
-        Accesory::create($request->only(["name","price","items"]));
-=======
+
         $storeInterface = app(ImageStorage::class);
         $storeInterface->storeAccesory($request);
         Accesory::validate($request);
@@ -49,7 +46,6 @@ class AdminAccesoryController extends Controller
             'price' => $request->only(["price"])["price"],
             'image' => $request->only(["profile_image"])["profile_image"]->getClientOriginalName(),
         ]);
->>>>>>> Stashed changes
         $message = 'Accesorio creado satisfactoriamente';
         return view('admin.accesory.save')->with("message", $message);
     }
@@ -64,11 +60,7 @@ class AdminAccesoryController extends Controller
 
     public function saveEditAccesory(Request $request)
     {
-<<<<<<< Updated upstream
-        Accesory::validateEdit(($request));
-        $accesory = Accesory::findOrFail($request['id']);
-        $accesory->fill($request->only(["name","price","items"]));
-=======
+
 
         $storeInterface = app(ImageStorage::class);
         $storeInterface->storeAccesory($request);
@@ -76,10 +68,10 @@ class AdminAccesoryController extends Controller
         $accesory = Accesory::findOrFail($request['id']);
         $accesory->fill($request->only(["name","price"]));
         $accesory->setImage($request->only(["profile_image"])["profile_image"]->getClientOriginalName());
->>>>>>> Stashed changes
         $accesory->save();
         $message = 'Accesorio editado satisfactoriamente';
         return view('admin.accesory.saveEditAccesory')->with("message", $message);
+
     }
 
     public function deleteAccesory(Request $request)

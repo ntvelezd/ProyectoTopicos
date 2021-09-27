@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Handbag;
+
 
 use Illuminate\Http\Request;
 
@@ -10,11 +12,20 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('home.index');
+        $data['message'] = '';
+        return view('home.index')->with("data", $data);
     }
 
     public function home()
     {
-        return redirect()->route('home.index');
+        $data['message'] = '';
+        return redirect()->route('home.index')->with("data", $data);
+    }
+    public function portfolio()
+    {
+        $handbag = Handbag::all();
+        $data["title"] = "Handbags";
+        $data["handbags"] = $handbag;
+        return view('admin.handbag.catalogue')->with("data", $data);
     }
 }

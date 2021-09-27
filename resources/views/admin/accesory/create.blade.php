@@ -19,19 +19,14 @@
                             <input type="text" class="form-control" placeholder="Insert Name" name="name" value="{{ old('name') }}">
                         </div>
                         <div class="form-group">
-                            <label>Email</label>
+                            <label>Price</label>
                             <input type="text" class="form-control" placeholder="Insert Price" name="price" value="{{ old('price') }}">
                         </div>
                         <div class="form-group">
-<<<<<<< Updated upstream
-                            <label>Items</label>
-                            <input type="text" class="form-control" placeholder="Insert Items" name="items" value="{{ old('items') }}">
-=======
-                            <label>Image:</label>
+                        <label>Image:</label>
                             <input type="file" name="profile_image" />
->>>>>>> Stashed changes
+                            <label>Image</label>
                         </div>
-                        
                         <button type="submit" class="btn btn-primary">Crear Accesory</button>
                     </form>
                 </div>

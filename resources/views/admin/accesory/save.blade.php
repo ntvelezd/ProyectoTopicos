@@ -10,6 +10,11 @@
                     Accesory save :D
                 </div>
             </div>
+            <a href="{{ URL::route('admin.home.index') }}">
+                <button class="btn btn-primary" type="button">Admin Home</button>
+            </a>
+            <a href="{{ URL::route('admin.accesory.create') }}">
+                <button class="btn btn-primary" type="button">Back to create</button>
         </div>
     </div>
 </div>
