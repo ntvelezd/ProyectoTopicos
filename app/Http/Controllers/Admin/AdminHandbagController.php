@@ -97,6 +97,10 @@ class AdminHandbagController extends Controller
     }
     public function deleteHandbag(Request $request)
     {
+        $reviews = Handbag::findOrFail($request['id'])->reviews()->get();
+        foreach($reviews as $review){
+            $review -> delete();
+        }
         Handbag::destroy($request->only(["id"]));
         return view('admin.handbag.delete');
     }
