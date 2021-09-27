@@ -2,8 +2,17 @@
 @section('content')
 
 <main role="main">
+    <div class="col-md-4 col-x1-3">
+        <div class="sidebar px-4 py-md-0">
+            <h6 class="sidebar-title">Search</h6>
+            <form class="input-group" action="{{route('admin.handbag.search')}}" method="GET">
+                <input type="text" class="form-control" name="search" placeholder="Search">
 
+            </form>
+        </div>
+    </div>
     <div class="album py-5 bg-light">
+
         <div class="container">
             <div class="row">
                 @foreach($data["handbags"] as $handbag)
