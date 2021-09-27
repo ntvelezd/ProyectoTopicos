@@ -44,4 +44,7 @@ Route::post('/admin/accesory/delete', 'App\Http\Controllers\Admin\AdminAccesoryC
 Route::get('/admin/accesory/edit/{id}', 'App\Http\Controllers\Admin\AdminAccesoryController@editAccesory')->name("admin.accesory.edit");
 Route::post('/admin/accesory/save', 'App\Http\Controllers\Admin\AdminAccesoryController@saveAccesory')->name("admin.accesory.save");
 Route::post('/admin/accesory/saveEditAccesory', 'App\Http\Controllers\Admin\AdminAccesoryController@saveEditAccesory')->name("admin.accesory.saveEditAccesory");
+
+Route::get('/image/index', 'App\Http\Controllers\ImageController@index')->name("image.index");
+Route::post('/image/save', 'App\Http\Controllers\ImageController@save')->name("image.save");
 Auth::routes();
