@@ -10,6 +10,12 @@
                     Accesory edited :D
                 </div>
             </div>
+            <a href="{{ URL::route('admin.home.index') }}">
+                <button class="btn btn-primary" type="button">Admin Home</button>
+            </a>
+            <a href="{{ URL::route('admin.accesory.catalogue') }}">
+                <button class="btn btn-primary" type="button">Back to catalogue</button>
+            </a>
         </div>
     </div>
 </div>

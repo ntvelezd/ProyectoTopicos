@@ -59,6 +59,7 @@ class AdminAccesoryController extends Controller
         $accesory->save();
         $message = 'Accesorio editado satisfactoriamente';
         return view('admin.accesory.saveEditAccesory')->with("message", $message);
+
     }
 
     public function deleteAccesory(Request $request)

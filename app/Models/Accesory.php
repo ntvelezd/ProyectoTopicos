@@ -17,6 +17,17 @@ class Accesory extends Model
         );
     }
 
+    public static function validateEdit(Request $request)
+    {
+        $request->validate(
+            [
+                "name" => "required",
+                "price" => "required",
+                
+            ]
+        );
+    }
+
     //attributes name,price
 
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Handbag;
+use App\Interfaces\ImageStorage;
 
 class AdminHandbagController extends Controller
 {
@@ -36,7 +37,17 @@ class AdminHandbagController extends Controller
 
     public function saveHandbag(Request $request)
     {
-        Handbag::create($request->only(['name', 'price', 'style', 'color', 'score', 'texture', 'image']));
+        Handbag::create([
+            'name' => $request->only(["name"])["name"],
+            'price' => $request->only(["price"])["price"],
+            'style' => $request->only(["style"])["style"],
+            'color' => $request->only(["color"])["color"],
+            'score' => $request->only(["score"])["score"],
+            'texture' => $request->only(["texture"])["texture"],
+            'image' => $request->only(["profile_image"])["profile_image"],
+        ]);
+        $storeInterface = app(ImageStorage::class);
+        $storeInterface->store($request);
         $message = 'Bolso creado satisfactoriamente';
         return view('admin.handbag.save')->with("message", $message);
     }
