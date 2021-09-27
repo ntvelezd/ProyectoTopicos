@@ -24,10 +24,10 @@
                     <form method="POST" action="{{ route('admin.handbag.save') }}">
                         @csrf
                         <input type="text" placeholder="Name" name="name" />
-                        <input type="text" placeholder="Price" name="price" />
+                        <input type="number" placeholder="Price" name="price" />
                         <input type="text" placeholder="Style" name="style" />
                         <input type="text" placeholder="Color" name="color" />
-                        <input type="text" placeholder="Score" name="score" />
+                        <input type="number" placeholder="Score" name="score" />
                         <input type="text" placeholder="Texture" name="texture" />
                         <div class="form-group">
                             <label>Image:</label>

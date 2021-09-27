@@ -29,6 +29,37 @@ class Item extends Model
     {
         $this->attributes['quantity'] = $quantity;
     }
+
+    public function getOrderId()
+    {
+        return $this->attributes['order_id'];
+    }
+
+    public function setOrderId($orderId)
+    {
+        $this->attributes['order_id'] = $orderId;
+    }
+
+    public function getHandbagId()
+    {
+        return $this->attributes['handbag_id'];
+    }
+
+    public function setHandbagId($handbagId)
+    {
+        $this->attributes['handbag_id'] = $handbagId;
+    }
+
+    public function getAccesoryId()
+    {
+        return $this->attributes['accesory_id'];
+    }
+
+    public function setAccesoryId($accesoryId)
+    {
+        $this->attributes['accesory_id'] = $accesoryId;
+    }
+
     public function order()
     {
         return $this->belongsTo(Order::class);

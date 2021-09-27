@@ -8,7 +8,7 @@ class Order extends Model
 {
     //attributes adress,totalPrice, user_id
 
-    protected $fillable = ['adress','totalPrice','status','user_id'];
+    protected $fillable = ['adress','totalPrice','user_id'];
 
     public function getId()
     {
@@ -29,6 +29,7 @@ class Order extends Model
     {
         $this->attributes['adress'] = $adress;
     }
+
     public function getTotalPrice()
     {
         return $this->attributes['totalPrice'];
@@ -39,19 +40,19 @@ class Order extends Model
         $this->attributes['totalPrice'] = $totalPrice;
     }
 
-    public function getTStatus()
+    public function getUserId()
     {
-        return $this->attributes['status'];
+        return $this->attributes['user_id'];
     }
 
-    public function setStatus($status)
+    public function setUserId($userId)
     {
-        $this->attributes['status'] = $status;
+        $this->attributes['user_id'] = $userId;
     }
 
-    public function handag()
+    public function items()
     {
-        return $this->hasMany(Handbag::class);
+        return $this->hasMany(Item::class);
     }
 
     public function user()

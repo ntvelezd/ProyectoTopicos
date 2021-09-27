@@ -108,6 +108,7 @@ class Handbag extends Model
     {
         return $this->hasMany(WishList::class);
     }
+
     public static function validate(Request $request)
     {
         $request->validate(
@@ -122,6 +123,7 @@ class Handbag extends Model
             ]
         );
     }
+
     public static function validateEdit(Request $request)
     {
         $request->validate(
@@ -135,5 +137,14 @@ class Handbag extends Model
                 "image" => "required"
             ]
         );
+    }
+
+    public static function totalValue($handbags)
+    {
+        $total = 0;
+        foreach ($handbags["handbags"] as $handbag) {
+            $total = $total + ($handbag->getPrice() * $handbags["quantifyHandbag"][$handbag->getId()]);
+        }
+        return $total;
     }
 }

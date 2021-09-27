@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Handbag;
 use App\Interfaces\ImageStorage;
 
-
 class AdminHandbagController extends Controller
 {
 
