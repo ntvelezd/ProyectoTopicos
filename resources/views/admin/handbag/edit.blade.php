@@ -7,7 +7,7 @@
                 <div class="card-header">Admin View</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('admin.handbag.saveEditHandbag') }}">
+                    <form method="POST" action="{{ route('admin.handbag.saveEditHandbag') }}" enctype="multipart/form-data">
                         @csrf
                         <input type="text" name="id" value="{{ $data['handbag']->getId()}}" hidden>
                         <div class="form-group">
@@ -43,10 +43,10 @@
                                 name="texture" value="{{ old('texture') }}">
                         </div>
                         <div class="form-group">
-                            <label>Image</label>
-                            <input type="text" class="form-control" placeholder="{{ $data['handbag']->getImage() }}"
-                                name="image" value="{{ old('image') }}">
+                            <label>Image:</label>
+                            <input type="file" name="profile_image" />
                         </div>
+
                         <button type="submit" class="btn btn-primary">Save Changes</button>
                     </form>
                 </div>
