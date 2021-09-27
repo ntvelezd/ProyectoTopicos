@@ -18,6 +18,18 @@ class Accesory extends Model
         );
     }
 
+    public static function validateEdit(Request $request)
+    {
+        $request->validate(
+            [
+                "name" => "required",
+                "price" => "required|numeric|gt:0",
+                "profile_image"=>"required"
+
+            ]
+        );
+    }
+
     //attributes name,price
 
 
@@ -66,5 +78,14 @@ class Accesory extends Model
     public function items()
     {
         return $this->HasMany(Item::class);
+    }
+
+    public static function totalValue($accesories)
+    {
+        $total = 0;
+        foreach ($accesories["accesories"] as $accesory) {
+            $total = $total + ($accesory->getPrice() * $accesories["quantifyAccesory"][$accesory->getId()]);
+        }
+        return $total;
     }
 }

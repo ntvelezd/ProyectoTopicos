@@ -60,8 +60,6 @@ class AdminAccesoryController extends Controller
 
     public function saveEditAccesory(Request $request)
     {
-
-
         $storeInterface = app(ImageStorage::class);
         $storeInterface->storeAccesory($request);
         Accesory::validate($request);
@@ -71,7 +69,6 @@ class AdminAccesoryController extends Controller
         $accesory->save();
         $message = 'Accesorio editado satisfactoriamente';
         return view('admin.accesory.saveEditAccesory')->with("message", $message);
-
     }
 
     public function deleteAccesory(Request $request)
