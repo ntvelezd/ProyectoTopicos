@@ -16,6 +16,9 @@
             <a href="{{ URL::route('admin.handbag.create') }}">
                 <button class="btn btn-primary" type="button">Back to create</button>
             </a>
+            <a href="{{ URL::route('admin.handbag.catalogue') }}">
+                <button class="btn btn-primary" type="button">Go to catalogue</button>
+            </a>
         </div>
     </div>
 </div>

@@ -29,6 +29,17 @@ class AdminUserController extends Controller
         $data["users"] = $user;
         return view('admin.user.catalogue')->with("data", $data);
     }
+    public function search(Request $request){
+        // Get the search value from the request
+        $search = $request->input('search');
+        // Search in the title and body columns from the posts table
+        $users = User::query()
+            ->where('name', 'LIKE', "%{$search}%")
+            ->get();
+            $data["users"] = $users;
+        // Return the search view with the resluts compacted
+        return view('admin.user.catalogue')->with("data", $data);
+    }
     public function createUser()
     {
         return view('admin.user.create');
