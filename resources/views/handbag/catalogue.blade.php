@@ -47,7 +47,8 @@
                             <p class="card-text">{{__('admin.texture')}} {{ $handbag->getTexture() }}</p>
                         </div>
                         <div class="d-flex justify-content-around">
-                            <button type="submit" class="btn btn-primary m-1" name="" value="">{{__('admin.details')}}</button>
+                            <a href="{{ route('wishlist.add', ['id'=> $handbag->getId()]) }}"
+                                class="btn btn-primary m-1" role="button" aria-pressed="true"> Add to Wishlist</a>
                             <a href="{{ route('handbag.add', ['id'=> $handbag->getId()]) }}" class="btn btn-primary m-1"
                                 role="button" aria-pressed="true">{{__('admin.add')}}</a>
                             <a href="{{ route('review.index', ['id'=> $handbag->getId()]) }}"
