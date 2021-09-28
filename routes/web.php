@@ -48,4 +48,6 @@ Route::get('/review/{id}', 'App\Http\Controllers\ReviewController@index')->name(
 Route::post('/review/save', 'App\Http\Controllers\ReviewController@save')->name("review.save");
 Route::get('/review/catalogue/{id}', 'App\Http\Controllers\ReviewController@catalogue')->name("review.catalogue");
 Route::get('/wishlist', 'App\Http\Controllers\WishlistController@index')->name("wishlist.index");
+Route::get('/wishlist/add', 'App\Http\Controllers\WishlistController@add')->name("wishlist.add");
+Route::get('/wishlist/addCart', 'App\Http\Controllers\WishlistController@addCart')->name("wishlist.addCart");
 Auth::routes();

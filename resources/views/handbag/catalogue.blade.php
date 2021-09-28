@@ -21,6 +21,7 @@
                         <a href="{{ route('handbag.add', ['id'=> $handbag->getId()]) }}" class="btn btn-primary" role="button" aria-pressed="true">Add Cart</a>
                         <a href="{{ route('review.index', ['id'=> $handbag->getId()]) }}" class="btn btn-primary" role="button" aria-pressed="true"> Create Review</a>
                         <a href="{{ route('review.catalogue', ['id'=> $handbag->getId()]) }}" class="btn btn-primary" role="button" aria-pressed="true"> See Review</a>
+                        <a href="{{ route('wishlist.add' ,['id'=> $handbag->getId()])}}" class="btn btn-primary" role="button" aria-pressed="true"> Add to Wishlist</a>
                     </div>
                 </div>
                 @endforeach
