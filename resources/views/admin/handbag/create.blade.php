@@ -13,7 +13,7 @@
 
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">Create Handbag</h5>
+                    <h5 class="card-title">{{__('admin.creat')}}</h5>
                     @if($errors->any())
                     <ul id="errors">
                         @foreach($errors->all() as $error)
@@ -30,10 +30,10 @@
                         <input type="number" placeholder="Score" name="score" />
                         <input type="text" placeholder="Texture" name="texture" />
                         <div class="form-group">
-                            <label>Image:</label>
+                            <label>{{__('admin.images')}}</label>
                             <input type="file" name="profile_image" />
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">{{__('admin.sub')}}</button>
                     </form>
 
 

@@ -9,7 +9,7 @@
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
             <div class="card">
-                <div class="card-header">Review View</div>
+                <div class="card-header">{{__('review.view')}} </div>
 
                 <div class="card-body">
                     <div class="col-md-4">
@@ -17,24 +17,24 @@
                             <img class="img-fluid rounded mb-5"
                                 src="{{  URL::asset('storage/handbags/'.$data['handbag']->getImage()) }}" alt="" />
                             <div class="card-body">
-                                <p class="card-text">Name: {{ $data["handbag"]->getName() }}</p>
-                                <p class="card-text">Price: {{ $data["handbag"]->getPrice() }}</p>
+                                <p class="card-text">{{__('review.name')}} {{ $data["handbag"]->getName() }}</p>
+                                <p class="card-text">{{__('review.price')}} {{ $data["handbag"]->getPrice() }}</p>
                             </div>
                         </div>
 
                         <form method="POST" action="{{ route('review.save') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label>Score</label>
+                                <label>{{__('review.score')}}</label>
                                 <input type="numeric" class="form-control" placeholder="Insert Score" name="score"
                                     value="{{ old('score') }}">
                             </div>
                             <div class="form-group">
-                                <label>Commentary</label>
+                                <label>{{__('review.commentary')}}</label>
                                 <input type="text" class="form-control" placeholder="Insert Commentary" name="comentary"
                                     value="{{ old('comentary') }}">
                             </div>
-                            <button type="submit" class="btn btn-primary" name="id" value="{{$data['handbag']->getId()}}">Crear Review</button>
+                            <button type="submit" class="btn btn-primary" name="id" value="{{$data['handbag']->getId()}}">{{__('review.create')}}</button>
                         </form>
                     </div>
                 </div>

@@ -4,17 +4,17 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Admin View</div>
+                <div class="card-header">A{{__('admin.view')}}</div>
 
                 <div class="card-body">
-                    Accesory save :D
+                {{__('admin.acces')}}
                 </div>
             </div>
             <a href="{{ URL::route('admin.home.index') }}">
-                <button class="btn btn-primary" type="button">Admin Home</button>
+                <button class="btn btn-primary" type="button">{{__('admin.home')}}</button>
             </a>
             <a href="{{ URL::route('admin.accesory.create') }}">
-                <button class="btn btn-primary" type="button">Back to create</button>
+                <button class="btn btn-primary" type="button">{{__('admin.crea')}}</button>
         </div>
     </div>
 </div>
