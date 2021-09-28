@@ -113,6 +113,15 @@ class Handbag extends Model
     {
         $request->validate(
             [
+
+                "name" => "required",
+                "price" => "required|numeric|gt:0",
+                "style" => "required",
+                "color" => "required",
+                "score" => "required|numeric|between:0,5",
+                "texture" => "required",
+                "profile_image" => "required"
+
             "name" => "required",
             "price" => "required|numeric|gt:0",
             "style" => "required",
@@ -120,6 +129,7 @@ class Handbag extends Model
             "score" => "required|numeric|between:0,5",
             "texture" => "required",
             "profile_image" => "required"
+
             ]
         );
     }

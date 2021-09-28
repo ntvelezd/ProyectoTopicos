@@ -7,9 +7,9 @@
             <h6 class="sidebar-title">Search</h6>
             <form class="input-group" action="{{route('admin.handbag.search')}}" method="GET">
                 <input type="text" class="form-control" name="search" placeholder="Search">
-
             </form>
         </div>
+        
     </div>
     <div class="album py-5 bg-light">
 
