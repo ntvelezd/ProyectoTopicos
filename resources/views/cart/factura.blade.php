@@ -1,25 +1,26 @@
 </div>
 <div id="app" class="col-11">
-    <h2>Factura</h2>
+    <h2>{{__('cart.fac')}}</h2>
     <div class="row my-3">
         <div class="col-10">
-            <h1>Tienda bolsos</h1>
-            <p>Av. Winston Churchill</p>
-            <p>Plaza Orleans 3er. nivel</p>
-            <p>local 312</p>
+            <h1>{{__('cart.bolsos')}}</h1>
+            <p>{{__('cart.dir1')}}</p>
+            <p>{{__('cart.dir2')}}</p>
+            <p>{{__('cart.dir3')}}</p>
         </div>
     </div>
     <hr />
     <table class="table table-borderless factura">
         <thead>
             <tr>
-                <th>Facturar a</th>
-                <th>Enviar a</th>
+                <th>{{__('cart.to')}}</th>
+                <th> </th>
+                <th>{{__('cart.send')}}</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>{{ auth()->user()->getName()}}</td>
+                <td>{{auth()->user()->getName()}}</td>
                 <td>{{ $data['order'] ->getAdress()}}</td>
             </tr>
         </tbody>
@@ -27,8 +28,8 @@
     <table class="table table-borderless factura">
         <thead>
             <tr>
-                <th>N° de orden</th>
-                <th>Fecha</th>
+                <th>{{__('cart.order')}}</th>
+                <th>{{__('cart.date')}}</th>
             </tr>
         </thead>
         <tbody>
@@ -42,9 +43,9 @@
         <table class="table table-borderless factura">
             <thead>
                 <tr>
-                    <th>Cant.</th>
-                    <th>Descripcion</th>
-                    <th>Precio Unitario</th>
+                    <th>{{__('cart.cant')}}</th>
+                    <th>{{__('cart.desc')}}</th>
+                    <th>{{__('cart.price')}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -67,7 +68,7 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <th>Total Factura</th>
+                    <th>{{__('cart.total1')}}</th>
                     <th>${{$data['order'] ->getTotalPrice()}} COP</th>
                 </tr>
             </tfoot>
@@ -75,21 +76,21 @@
     </div>
     <div class="cond row">
         <div class="col-12 mt-3">
-            <h4>Condiciones y formas de pago</h4>
-            <p>El pago se debe realizar en un plazo de 15 dias.</p>
+            <h4>{{__('cart.cond')}}</h4>
+            <p>{{__('cart.pago')}}</p>
             <p>
-                Metodos de pago:
+                {{__('cart.mpago')}}
                 <br />
-                Cuenta de ahorros bancolombia: 112233445566
+                {{__('cart.cuenta')}}
                 <br />
-                Cuenta Nequi: 123456789
+                {{__('cart.nequi')}}
             </p>
         </div>
     </div>
     <form method="POST" action="{{ route('cart.pdf') }}">
         @csrf
-        <button type="submit" class="btn btn-primary" name="id" value="{{ $data['order']->getId() }}">Generate
+        <button type="submit" class="btn btn-primary" name="id" value="{{ $data['order']->getId() }}">{{__('cart.gen')}}
             PDF</button>
     </form>
-    <a href="{{route('home.index')}}" class="btn btn-primary" role="button" aria-pressed="true">Inicio</a>
+    <a href="{{route('home.index')}}" class="btn btn-primary" role="button" aria-pressed="true">{{__('cart.start')}}</a>
 </div>
