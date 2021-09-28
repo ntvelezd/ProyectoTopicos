@@ -20,6 +20,7 @@ class User extends Authenticatable
         'email',
         'password',
         'is_admin',
+        'wishlist_id',
     ];
 
     /**
@@ -102,6 +103,16 @@ class User extends Authenticatable
     public function setEmail($email)
     {
         $this->attributes['email'] = $email;
+    }
+
+    public function getWishlist()
+    {
+        return $this->attributes['wishlist_id'];
+    }
+
+    public function setWishlist($wishlist)
+    {
+        $this->attributes['wishlist_id'] = $wishlist;
     }
 
     public function orders()
