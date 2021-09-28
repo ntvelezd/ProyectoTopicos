@@ -60,12 +60,16 @@
     <header class="masthead bg-primary text-white text-center" style='background-color: #bd2130'>
         <div class="container d-flex align-items-center flex-column">
             <!-- Masthead Heading-->
+<<<<<<< Updated upstream
 
             <img src="{{ asset('/img/portfolio/moon4.png') }}">
             <h1 class="masthead-heading text-uppercase mb-0">Admin panel</h1>
 
             <h1 class="masthead-heading text-uppercase mb-0">{{ $data['title'] }}</h1>
 
+=======
+            <h1 class="masthead-heading text-uppercase mb-0"></h1>
+>>>>>>> Stashed changes
             <!-- Icon Divider-->
             <div class="divider-custom divider-light">
                 <div class="divider-custom-line"></div>
@@ -73,7 +77,7 @@
                 <div class="divider-custom-line"></div>
             </div>
             <!-- Masthead Subheading-->
-            <p class="masthead-subheading font-weight-light mb-0">Website - {{ $data['title'] }}</p>
+            <p class="masthead-subheading font-weight-light mb-0">Website</p>
         </div>
     </header>
 

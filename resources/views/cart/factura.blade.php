@@ -22,7 +22,7 @@
         </thead>
         <tbody>
             <tr>
-                <td>Arian Manuel Garcia Reynoso</td>
+                <td>{{ auth()->user()->getName()}}</td>
                 <td>{{ $data['order'] ->getAdress()}}</td>
             </tr>
         </tbody>

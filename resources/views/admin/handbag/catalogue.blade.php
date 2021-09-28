@@ -27,12 +27,12 @@
                             <p class="card-text">Color: {{ $handbag->getColor() }}</p>
                             <p class="card-text">Score: {{ $handbag->getScore() }}</p>
                             <p class="card-text">Texture: {{ $handbag->getTexture() }}</p>
-                            <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-around">
                                 <a href="edit/{{$handbag->getId()}}" class="btn btn-primary m-1" role="button"
                                     aria-pressed="true">Edit</a>
                                 <form method="POST" action="{{ route('admin.handbag.delete') }}">
                                     @csrf
-                                    <button type="submit" class="btn btn-primary" name="id"
+                                    <button type="submit" class="btn btn-primary m-1" name="id"
                                         value="{{ ($handbag->getId()) }}">Delete</button>
                                 </form>
                             </div>

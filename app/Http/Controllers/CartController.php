@@ -135,7 +135,6 @@ class CartController extends Controller
             }
             $order->setTotalPrice($total);
             $data['order'] = $order;
-
             $order->save();
             $request->session()->forget('handbags');
             $request->session()->forget('quantifyHandbag');
