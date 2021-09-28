@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Handbag;
-use App\Models\Post;
+use App\Models\Item;
 use App\Interfaces\ImageStorage;
 
 class AdminHandbagController extends Controller
@@ -41,6 +41,7 @@ class AdminHandbagController extends Controller
     {
         $storeInterface = app(ImageStorage::class);
         $storeInterface->store($request);
+        Handbag::validate($request);
         Handbag::create([
             'name' => $request->only(["name"])["name"],
             'price' => $request->only(["price"])["price"],
@@ -60,6 +61,22 @@ class AdminHandbagController extends Controller
         $data["title"] = "Handbags";
         $data["handbags"] = $handbag;
         return view('admin.handbag.list')->with("data", $data);
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        $handbags = Handbag::query()
+        ->where('name', 'LIKE', "%{$search}%")
+        ->get();
+        $data["handbags"] = $handbags;
+        $bestHandbag = Item::select('handbag_id')
+            ->groupBy('handbag_id')
+            ->orderByRaw('COUNT(*) DESC')
+            ->limit(1)
+            ->get();
+        $data["handbags"] = $handbags;
+        return view('admin.handbag.catalogue')->with("data", $data);
     }
 
     public function editHandbag($id)

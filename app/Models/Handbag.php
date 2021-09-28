@@ -113,7 +113,6 @@ class Handbag extends Model
     {
         $request->validate(
             [
-
                 "name" => "required",
                 "price" => "required|numeric|gt:0",
                 "style" => "required",

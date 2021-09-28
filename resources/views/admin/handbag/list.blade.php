@@ -7,14 +7,12 @@
                 <h6 class="sidebar-title">{{__('admin.search')}}</h6>
                 <form class="input-group" action="{{route('admin.handbag.search')}}" method="GET">
                     <input type="text" class="form-control" name="search" placeholder="Search">
-
                 </form>
             </div>
         </div>
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{__('admin.lis')}}</div>
-
                 <div class="card-body">
                     <table style="width:100% ; border-spacing: 5px ">
                         <tr>
@@ -36,9 +34,8 @@
                             <td>{{ $handbag->getTexture() }}</td>
                             <td>{{ $handbag->getImage() }}</td>
                             <td>
-
-                                <a href="edit/{{$handbag->getId()}}" class="btn btn-primary" role="button" aria-pressed="true">{{__('admin.ed')}}</a>
-
+                                <a href="edit/{{$handbag->getId()}}" class="btn btn-primary" role="button"
+                                    aria-pressed="true">{{__('admin.ed')}}</a>
                             </td>
                             <td>
                                 <form method="POST" action="{{ route('admin.handbag.delete') }}">
@@ -50,7 +47,6 @@
                         </tr>
                         @endforeach
                     </table>
-
                 </div>
             </div>
             <a href="{{ URL::route('admin.home.index') }}">

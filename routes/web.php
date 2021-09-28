@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name("home.index");
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name("home.index");
 Route::get('/handbag/catalogue', 'App\Http\Controllers\HandbagController@catalogue')->name("handbag.catalogue");

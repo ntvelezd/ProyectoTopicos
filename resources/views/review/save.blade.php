@@ -5,9 +5,8 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header"> {{__('review.view')}}</div>
-
                 <div class="card-body">
-                {{__('review.save')}}
+                    {{__('review.save')}}
                 </div>
             </div>
         </div>

@@ -15,12 +15,10 @@ class ImageLocalStorage implements ImageStorage
         }
     }
 
-
     public function storeAccesory($request)
     {
         if ($request->hasFile('profile_image')) {
             Storage::disk('public')->put("accesories/" . $request->file('profile_image')->getClientOriginalName(), file_get_contents($request->file('profile_image')->getRealPath()));
         }
     }
-
 }

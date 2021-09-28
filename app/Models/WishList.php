@@ -20,11 +20,6 @@ class WishList extends Model
         $this->attributes['id'] = $id;
     }
 
-    public function handbags()
-    {
-        return $this->belongsToMany(Handbag::class);
-    }
-
     public function getUserId()
     {
         return $this->attributes['user_id'];
@@ -33,6 +28,11 @@ class WishList extends Model
     public function setUserId($userId)
     {
         $this->attributes['user_id'] = $userId;
+    }
+
+    public function handbags()
+    {
+        return $this->belongsToMany(Handbag::class);
     }
 
     public function user()

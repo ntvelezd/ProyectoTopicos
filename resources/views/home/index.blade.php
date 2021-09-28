@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
 <!-- Portfolio Section-->
-
 @if(session()->get('data') != '')
 <div class="alert alert-danger " role="alert-block">
     <h4 class="alert-heading text-center">ERROR!</h4>
@@ -11,8 +10,7 @@
 <section class="page-section portfolio" id="portfolio">
     <div class="container">
         <!-- Portfolio Section Heading-->
-
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0" >{{__('menu.portfolio')}}</h2>
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">{{__('menu.portfolio')}}</h2>
         <!-- Icon Divider-->
         <div class="divider-custom">
             <div class="divider-custom-line"></div>
@@ -39,7 +37,14 @@
                     <img class="img-fluid" src="" alt="" />
                 </div>
             </div>
-
+            <div class="col-md-6 col-lg-4 mb-5">
+                <div class="portfolio-item mx-auto">
+                    <a class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100 btn"
+                        href="{{ route('accesory.catalogue') }}">
+                    </a>
+                    <img class="img-fluid" src="{{ asset('/img/portfolio/accesory.png') }}" alt="" />
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -61,19 +66,15 @@
             </div>
             <div class="col-lg-4 mr-auto">
                 <p class="lead">{{__('menu.description2')}}</p>
-
-            <!-- Portfolio Item 3-->
-            <div class="col-md-6 col-lg-4 mb-5">
-                <div class="portfolio-item mx-auto">
-                    <a class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100 btn"
-                        href="{{ route('accesory.catalogue') }}">
-                    </a>
-                    <img class="img-fluid" src="{{ asset('/img/portfolio/accesory.png') }}" alt="" />
+                <!-- Portfolio Item 3-->
+                <div class="col-md-6 col-lg-4 mb-5">
+                    <div class="portfolio-item mx-auto">
+                        <a class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100 btn"
+                            href="{{ route('accesory.catalogue') }}">
+                        </a>
+                    </div>
                 </div>
-
             </div>
         </div>
-    </div>
 </section>
-
 @endsection
