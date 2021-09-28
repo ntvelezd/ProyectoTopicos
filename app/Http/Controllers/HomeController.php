@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Lang;
 use App\Models\Handbag;
 use Illuminate\Http\Request;
 

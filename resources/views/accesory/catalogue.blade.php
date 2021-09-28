@@ -10,13 +10,13 @@
                     <div class="card mb-4 box-shadow">
                         <img class="img-fluid rounded mb-5" src="{{  URL::asset('storage/handbags/'. $accesory->getImage()) }}" alt="" />
                         <div class="card-body">
-                            <p class="card-text">Name: {{ $accesory->getName() }}</p>
-                            <p class="card-text">Price: {{ $accesory->getPrice() }}</p>
+                            <p class="card-text">{{__('admin.name')}} {{ $accesory->getName() }}</p>
+                            <p class="card-text">{{__('admin.price')}}{{ $accesory->getPrice() }}</p>
                         </div>
                         <div class="d-flex justify-content-around">
-                            <button type="submit" class="btn btn-primary m-1" name="" value="">View Details</button>
+                            <button type="submit" class="btn btn-primary m-1" name="" value="">{{__('admin.details')}}</button>
                             <a href="{{ route('accesory.add', ['id'=> $accesory->getId()]) }}"
-                                class="btn btn-primary m-1">Add Cart</a>
+                                class="btn btn-primary m-1">{{__('admin.add')}}</a>
                         </div>
                     </div>
                 </div>

@@ -23,13 +23,16 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
         <div class="container">
+
+            <a class="navbar-brand js-scroll-trigger" href="{{ route('admin.home.index') }}">{{__('admin.panel')}}</a>
+            <button
+                class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded"
+                type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+                {{__('admin.panel')}}
+
             <img src="{{ asset('/img/portfolio/moon4.png') }}">
-            <p>
-                ...
-            </p>
-            <a class="navbar-brand js-scroll-trigger" href="{{ route('admin.home.index') }}">Admin Panel</a>
-            <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                Admin Panel
+            
                 <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -60,16 +63,15 @@
     <header class="masthead bg-primary text-white text-center" style='background-color: #bd2130'>
         <div class="container d-flex align-items-center flex-column">
             <!-- Masthead Heading-->
-<<<<<<< Updated upstream
+
+            <h1 class="masthead-heading text-uppercase mb-0">{{__('admin.ad')}}</h1>
 
             <img src="{{ asset('/img/portfolio/moon4.png') }}">
             <h1 class="masthead-heading text-uppercase mb-0">Admin panel</h1>
 
             <h1 class="masthead-heading text-uppercase mb-0">{{ $data['title'] }}</h1>
-
-=======
             <h1 class="masthead-heading text-uppercase mb-0"></h1>
->>>>>>> Stashed changes
+
             <!-- Icon Divider-->
             <div class="divider-custom divider-light">
                 <div class="divider-custom-line"></div>
@@ -77,12 +79,58 @@
                 <div class="divider-custom-line"></div>
             </div>
             <!-- Masthead Subheading-->
-            <p class="masthead-subheading font-weight-light mb-0">Website</p>
+
+            <p class="masthead-subheading font-weight-light mb-0">{{__('admin.store')}}</p>
+
         </div>
     </header>
 
     @yield('content')
 
+    <!-- Footer-->
+    <footer class="footer text-center">
+        <div class="container">
+            <div class="row">
+                <!-- Footer Location-->
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <h4 class="text-uppercase mb-4">{{__('admin.location')}}</h4>
+                    <p class="lead mb-0">
+                        {{__('admin.loc1')}}
+                        <br />
+                        {{__('admin.loc2')}}  
+                    </p>
+                </div>
+                <!-- Footer Social Icons-->
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <h4 class="text-uppercase mb-4">{{__('admin.web')}}</h4>
+                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i
+                            class="fab fa-fw fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
+                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i
+                            class="fab fa-fw fa-linkedin-in"></i></a>
+                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
+                </div>
+                <!-- Footer About Text-->
+                <div class="col-lg-4">
+                    <h4 class="text-uppercase mb-4">{{__('admin.free')}}</h4>
+                    <p class="lead mb-0">
+                        {{__('admin.descr')}}
+                        <a href="http://startbootstrap.com">{{__('admin.boot')}}</a>
+                        .
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Copyright Section-->
+    <div class="copyright py-4 text-center text-white">
+        <div class="container"><small>{{__('admin.copy')}}</small></div>
+    </div>
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes)-->
+    <div class="scroll-to-top d-lg-none position-fixed">
+        <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top"><i
+                class="fa fa-chevron-up"></i></a>
+    </div>
 
     <!-- Bootstrap core JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -92,5 +140,4 @@
     <!-- Core theme JS-->
     <script src="{{ asset('/js/scripts.js') }}"></script>
 </body>
-
 </html>

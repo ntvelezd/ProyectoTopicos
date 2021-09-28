@@ -4,10 +4,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Admin View</div>
+                <div class="card-header">{{__('admin.view')}}</div>
 
                 <div class="card-body">
-                    delete user
+                {{__('admin.delete')}}
                 </div>
             </div>
         </div>
