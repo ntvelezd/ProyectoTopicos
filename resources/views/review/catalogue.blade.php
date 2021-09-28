@@ -7,13 +7,13 @@
         <div class="container">
             <div class="row">
             <img class="img-fluid rounded mb-5" src="{{  URL::asset('storage/handbags/'.$data['handbag']->getImage()) }}" alt="" />
-            <p class="card-text">Name: {{ $data["handbag"]->getName() }}</p>
+            <p class="card-text">{{__('review.name')}} {{ $data["handbag"]->getName() }}</p>
                 @foreach($data["review"] as $review)
                 <div class="col-md-4">
                     <div class="card mb-4 box-shadow">
                         <div class="card-body">
-                            <p class="card-text">Score: {{ $review->getScore() }}</p>
-                            <p class="card-text">Commentary: {{ $review->getComentary() }}</p>
+                            <p class="card-text">{{__('review.score')}}{{ $review->getScore() }}</p>
+                            <p class="card-text">{{__('review.commentary')}} {{ $review->getComentary() }}</p>
                         </div>
                     </div>
                 </div>

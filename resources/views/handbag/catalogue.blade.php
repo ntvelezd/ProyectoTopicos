@@ -2,15 +2,6 @@
 @section('content')
 
 <main role="main">
-<div class="col-md-4 col-x1-3">
-        <div class="sidebar px-4 py-md-0">
-            <h6 class="sidebar-title">Search</h6>
-            <form class="input-group" action="{{route('handbag.search')}}" method="GET">
-                <input type="text" class="form-control" name="search" placeholder="Search">
-
-            </form>
-        </div>
-    </div>
     <div class="album py-5 bg-light">
         <div class="container">
             <div class="row">
@@ -26,12 +17,11 @@
                             <p class="card-text">Score: {{ $handbag->getScore() }}</p>
                             <p class="card-text">Texture: {{ $handbag->getTexture() }}</p>
                         </div>
-                        <button type="submit" class="btn btn-primary" name="" value="">View Details</button>
-                        <a href="{{ route('handbag.add', ['id'=> $handbag->getId()]) }}" class="btn btn-primary" role="button" aria-pressed="true">Add Cart</a>
-                        <a href="{{ route('review.index', ['id'=> $handbag->getId()]) }}" class="btn btn-primary" role="button" aria-pressed="true"> Create Review</a>
-                        <a href="{{ route('review.catalogue', ['id'=> $handbag->getId()]) }}" class="btn btn-primary" role="button" aria-pressed="true"> See Review</a>
-                        <a href="{{ route('wishlist.add' ,['id'=> $handbag->getId()])}}" class="btn btn-primary" role="button" aria-pressed="true"> Add to Wishlist</a>
-                   
+                        <button type="submit" class="btn btn-primary" name="" value="">{{__('handbag.view')}}</button>
+                        <a href="{{ route('handbag.add', ['id'=> $handbag->getId()]) }}" class="btn btn-primary" role="button" aria-pressed="true">{{__('handbag.cart')}}</a>
+                        <a href="{{ route('review.index', ['id'=> $handbag->getId()]) }}" class="btn btn-primary" role="button" aria-pressed="true"> {{__('handbag.review')}}</a>
+                        <a href="{{ route('review.catalogue', ['id'=> $handbag->getId()]) }}" class="btn btn-primary" role="button" aria-pressed="true"> {{__('handbag.see')}}</a>
+                        <a href="{{ route('wishlist.add' ,['id'=> $handbag->getId()]) }}" class="btn btn-primary" role="button" aria-pressed="true"> {{__('handbag.wishlist')}}</a>
                     </div>
                 </div>
                 @endforeach
