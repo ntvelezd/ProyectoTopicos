@@ -14,13 +14,15 @@ return [
     */
 
     'view' => 'Review View',
-    'create' => 'Send Review ',
+    'create' => 'Review create ',
     'save' => 'Review Saved Succesfully ',
     'commentary' => 'Commentary:',
     'score' => 'Score:',
     'name' => 'Name:',
     'price' => 'Price:',
     'view' => 'Review View',
+    'rev'=>'Create Review',
+    'see'=>'See Review',
 
     
 
