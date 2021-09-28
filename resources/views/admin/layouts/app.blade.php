@@ -42,9 +42,8 @@
                     @else
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
                             href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">{{ __('Logout') }}</a></li>
-
+                            onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                    </li>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
@@ -57,7 +56,7 @@
     <header class="masthead bg-primary text-white text-center" style='background-color: #bd2130'>
         <div class="container d-flex align-items-center flex-column">
             <!-- Masthead Heading-->
-            <h1 class="masthead-heading text-uppercase mb-0">Admin panel</h1>
+            <h1 class="masthead-heading text-uppercase mb-0">{{ $data['title'] }}</h1>
             <!-- Icon Divider-->
             <div class="divider-custom divider-light">
                 <div class="divider-custom-line"></div>
@@ -65,7 +64,7 @@
                 <div class="divider-custom-line"></div>
             </div>
             <!-- Masthead Subheading-->
-            <p class="masthead-subheading font-weight-light mb-0">Website - Admin Panel</p>
+            <p class="masthead-subheading font-weight-light mb-0">Website - {{ $data['title'] }}</p>
         </div>
     </header>
 

@@ -22,11 +22,28 @@
                         <div class="row">{{ $handbag->getName() }}</div>
                     </div>
                     <div class="col">
-                        <a href="{{ route('cart.down', ['id'=> $handbag->getId()]) }}">-</a><a href="#"
+                        <a href="{{ route('cart.down', ['id'=> 'h'.$handbag->getId()]) }}">-</a><a href="#"
                             class="border">{{$data['quantifyHandbag'][$handbag->getId()]}}</a><a
-                            href="{{ route('cart.up', ['id'=> $handbag->getId()]) }}">+</a>
+                            href="{{ route('cart.up', ['id'=> 'h'.$handbag->getId()]) }}">+</a>
                     </div>
                     <div class="col">&dollar; {{ $handbag->getPrice() }} <span class="close">&#10005;</span></div>
+                </div>
+            </div>
+            @endforeach
+            @foreach($data["accesories"] as $key => $accesory)
+            <div class="row border-top border-bottom">
+                <div class="row main align-items-center">
+                    <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/1GrakTl.jpg"></div>
+                    <div class="col">
+                        <div class="row text-muted">Accesory</div>
+                        <div class="row">{{ $accesory->getName() }}</div>
+                    </div>
+                    <div class="col">
+                        <a href="{{ route('cart.down', ['id'=> 'a'.$accesory->getId()]) }}">-</a><a href="#"
+                            class="border">{{$data['quantifyAccesory'][$accesory->getId()]}}</a><a
+                            href="{{ route('cart.up', ['id'=> 'a'.$accesory->getId()]) }}">+</a>
+                    </div>
+                    <div class="col">&dollar; {{ $accesory->getPrice() }} <span class="close">&#10005;</span></div>
                 </div>
             </div>
             @endforeach
@@ -40,7 +57,7 @@
             <hr>
             <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
                 <div class="col">TOTAL PRICE</div>
-                <div class="col text-right">&dollar; {{ $data["total"]}} </div>
+                <div class="col text-right">&dollar; {{ $data["total"] }} </div>
             </div>
             <form method="POST" action="{{ route('cart.buy') }}">
                 @csrf

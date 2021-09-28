@@ -33,7 +33,7 @@
             <div class="col-md-6 col-lg-4 mb-5">
                 <div class="portfolio-item mx-auto">
                     <a class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100 btn"
-                        href="">
+                        href="{{ route('accesory.catalogue') }}">
                     </a>
                     <img class="img-fluid" src="{{ asset('/img/portfolio/user.png') }}" alt="" />
                 </div>

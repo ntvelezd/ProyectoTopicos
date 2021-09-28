@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Handbag;
+use App\Models\Post;
 use App\Interfaces\ImageStorage;
 
 class AdminHandbagController extends Controller
@@ -32,7 +33,8 @@ class AdminHandbagController extends Controller
 
     public function createHandbag()
     {
-        return view('admin.handbag.create');
+        $data["title"] = "Save Handbag";
+        return view('admin.handbag.create')->with("data", $data);
     }
 
     public function saveHandbag(Request $request)
@@ -49,8 +51,8 @@ class AdminHandbagController extends Controller
             'texture' => $request->only(["texture"])["texture"],
             'image' => $request->only(["profile_image"])["profile_image"]->getClientOriginalName(),
         ]);
-        $message = 'Bolso creado satisfactoriamente';
-        return view('admin.handbag.save')->with("message", $message);
+        $data["title"] = "Save Handbag";
+        return view('admin.handbag.save')->with("data", $data);
     }
 
     public function listHandbag()
@@ -59,6 +61,18 @@ class AdminHandbagController extends Controller
         $data["title"] = "Handbags";
         $data["handbags"] = $handbag;
         return view('admin.handbag.list')->with("data", $data);
+    }
+
+    public function search(Request $request){
+        // Get the search value from the request
+        $search = $request->input('search');
+        // Search in the title and body columns from the posts table
+        $handbags = Handbag::query()
+            ->where('name', 'LIKE', "%{$search}%")
+            ->get();
+            $data["handbags"] = $handbags;
+        // Return the search view with the resluts compacted
+        return view('admin.handbag.catalogue')->with("data", $data);
     }
 
     public function editHandbag($id)
@@ -79,8 +93,8 @@ class AdminHandbagController extends Controller
         $handbag->fill($request->only(['name', 'price', 'style', 'color', 'score', 'texture']));
         $handbag->setImage($request->only(["profile_image"])["profile_image"]->getClientOriginalName());
         $handbag->save();
-        $message = 'Bolso editado satisfactoriamente';
-        return view('admin.handbag.saveEditHandbag')->with("message", $message);
+        $data['title'] = 'Save Handbag';
+        return view('admin.handbag.saveEditHandbag')->with("data", $data);
     }
     public function deleteHandbag(Request $request)
     {
@@ -89,6 +103,7 @@ class AdminHandbagController extends Controller
             $review -> delete();
         }
         Handbag::destroy($request->only(["id"]));
-        return view('admin.handbag.delete');
+        $data['title'] = 'Delete Handbag';
+        return view('admin.handbag.delete')->with("data", $data);
     }
 }

@@ -2,6 +2,15 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+        <div class="col-md-4 col-x1-3">
+            <div class="sidebar px-4 py-md-0">
+                <h6 class="sidebar-title">Search</h6>
+                <form class="input-group" action="{{route('admin.user.search')}}" method="GET">
+                    <input type="text" class="form-control" name="search" placeholder="Search">
+
+                </form>
+            </div>
+        </div>
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Users List</div>
@@ -21,14 +30,12 @@
                             <td>{{ $user->getEmail() }}</td>
                             <td>{{ $user->getAdmin() }}</td>
                             <td>
-                                <a href="edit/{{$user->getId()}}" class="btn btn-primary" role="button"
-                                    aria-pressed="true">Edit User</a>
+                                <a href="edit/{{$user->getId()}}" class="btn btn-primary" role="button" aria-pressed="true">Edit User</a>
                             </td>
                             <td>
                                 <form method="POST" action="{{ route('admin.user.delete') }}">
                                     @csrf
-                                    <button type="submit" class="btn btn-primary" name="id"
-                                        value="{{ ($user->getId()) }}">Delete</button>
+                                    <button type="submit" class="btn btn-primary" name="id" value="{{ ($user->getId()) }}">Delete</button>
 
                                 </form>
                             </td>
@@ -38,6 +45,10 @@
                     <form method="GET" action="{{ route('admin.user.create') }}">
                         <button type="submit" class="btn btn-primary">Create User</button>
                     </form>
+                    <a href="{{ URL::route('admin.home.index') }}">
+                        <button class="btn btn-primary" type="button">Admin Home</button>
+                    </a>
+
                 </div>
             </div>
         </div>

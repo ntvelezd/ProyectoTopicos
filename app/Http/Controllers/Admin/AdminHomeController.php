@@ -21,7 +21,7 @@ class AdminHomeController extends Controller
 
     public function index()
     {
-
-        return view('admin.home.index');
+        $data['title'] = 'Admin Home';
+        return view('admin.home.index')->with('data', $data);
     }
 }

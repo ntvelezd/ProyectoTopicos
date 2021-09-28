@@ -16,20 +16,13 @@ class CreateAccesoriesTable extends Migration
 
         Schema::create('accesories', function (Blueprint $table) {
 
-
             //['name', 'price','image']
-            Schema::create('accessories', function (Blueprint $table){
             $table->bigIncrements('id');
             $table->text('name');
             $table->integer('price');
             $table->text('image');
             $table->timestamps();
-
         });
-
-
-     });
-
     }
 
     /**
@@ -42,6 +35,4 @@ class CreateAccesoriesTable extends Migration
         Schema::dropIfExists('accessories');
     }
 }
-
-
 

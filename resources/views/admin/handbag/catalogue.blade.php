@@ -2,8 +2,17 @@
 @section('content')
 
 <main role="main">
+    <div class="col-md-4 col-x1-3">
+        <div class="sidebar px-4 py-md-0">
+            <h6 class="sidebar-title">Search</h6>
+            <form class="input-group" action="{{route('admin.handbag.search')}}" method="GET">
+                <input type="text" class="form-control" name="search" placeholder="Search">
 
+            </form>
+        </div>
+    </div>
     <div class="album py-5 bg-light">
+
         <div class="container">
             <div class="row">
                 @foreach($data["handbags"] as $handbag)
@@ -20,7 +29,7 @@
                             <div class="d-flex justify-content-between align-items-center">
 
 
-                                <a href="edit/{{$handbag->getId()}}" class="btn btn-primary" role="button" aria-pressed="true">Edit</a>
+                                <a href="edit/{{$handbag->getId()}}" class="btn btn-primary m-1" role="button" aria-pressed="true">Edit</a>
                                 <form method="POST" action="{{ route('admin.handbag.delete') }}">
                                     @csrf
                                     <button type="submit" class="btn btn-primary" name="id" value="{{ ($handbag->getId()) }}">Delete</button>
