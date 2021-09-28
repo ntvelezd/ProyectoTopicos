@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Handbag;
+use App\Models\Post;
 use App\Interfaces\ImageStorage;
 
 class AdminHandbagController extends Controller
@@ -62,6 +63,18 @@ class AdminHandbagController extends Controller
         return view('admin.handbag.list')->with("data", $data);
     }
 
+    public function search(Request $request){
+        // Get the search value from the request
+        $search = $request->input('search');
+        // Search in the title and body columns from the posts table
+        $handbags = Handbag::query()
+            ->where('name', 'LIKE', "%{$search}%")
+            ->get();
+            $data["handbags"] = $handbags;
+        // Return the search view with the resluts compacted
+        return view('admin.handbag.catalogue')->with("data", $data);
+    }
+
     public function editHandbag($id)
     {
         $handbag = Handbag::findOrFail($id);
@@ -85,6 +98,10 @@ class AdminHandbagController extends Controller
     }
     public function deleteHandbag(Request $request)
     {
+        $reviews = Handbag::findOrFail($request['id'])->reviews()->get();
+        foreach($reviews as $review){
+            $review -> delete();
+        }
         Handbag::destroy($request->only(["id"]));
         $data['title'] = 'Delete Handbag';
         return view('admin.handbag.delete')->with("data", $data);

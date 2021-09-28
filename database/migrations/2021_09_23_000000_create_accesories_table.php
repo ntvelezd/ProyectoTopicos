@@ -13,7 +13,9 @@ class CreateAccesoriesTable extends Migration
      */
     public function up()
     {
+
         Schema::create('accesories', function (Blueprint $table) {
+
             //['name', 'price','image']
             $table->bigIncrements('id');
             $table->text('name');
@@ -33,3 +35,4 @@ class CreateAccesoriesTable extends Migration
         Schema::dropIfExists('accessories');
     }
 }
+

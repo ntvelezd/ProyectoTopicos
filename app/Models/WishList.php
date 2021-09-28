@@ -22,7 +22,7 @@ class WishList extends Model
 
     public function handbags()
     {
-        return $this->hasMany(Handbag::class);
+        return $this->belongsToMany(Handbag::class);
     }
 
     public function getUserId()
