@@ -120,6 +120,9 @@ class Handbag extends Model
                 "score" => "required|numeric|between:0,5",
                 "texture" => "required",
                 "profile_image" => "required"
+            ]
+        );
+    }
 
 
     public static function validateEdit(Request $request)

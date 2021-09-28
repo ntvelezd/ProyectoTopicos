@@ -32,8 +32,8 @@ class CartController extends Controller
             $data["quantifyAccesory"] = $quantify;
             $data["total"] += Accesory::totalValue($data);
         } else {
-            $data["handbags"] = array();
-            $data["quantifyHandbag"] = array();
+            $data["accesories"] = array();
+            $data["quantifyAccesory"] = array();
             $data["total"] = 0;
         }
         return view('cart.index')->with("data", $data);

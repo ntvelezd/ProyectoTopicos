@@ -19,7 +19,6 @@ Route::get('/', 'App\Http\Controllers\HomeController@index')->name("home.index")
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name("home.index");
 Route::get('/handbag/catalogue', 'App\Http\Controllers\HandbagController@catalogue')->name("handbag.catalogue");
 Route::get('/handbag/add/{id}', 'App\Http\Controllers\HandbagController@add')->name("handbag.add");
-
 Route::get('/handbag/search', 'App\Http\Controllers\HandbagController@search')->name('handbag.search');
 
 
