@@ -106,13 +106,14 @@ class Handbag extends Model
 
     public function wishList()
     {
-        return $this->hasMany(WishList::class);
+        return $this->BelongsToMany(WishList::class);
     }
 
     public static function validate(Request $request)
     {
         $request->validate(
             [
+
                 "name" => "required",
                 "price" => "required|numeric|gt:0",
                 "style" => "required",
@@ -120,6 +121,15 @@ class Handbag extends Model
                 "score" => "required|numeric|between:0,5",
                 "texture" => "required",
                 "profile_image" => "required"
+
+            "name" => "required",
+            "price" => "required|numeric|gt:0",
+            "style" => "required",
+            "color" => "required",
+            "score" => "required|numeric|between:0,5",
+            "texture" => "required",
+            "profile_image" => "required"
+
             ]
         );
     }

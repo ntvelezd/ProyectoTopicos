@@ -52,6 +52,7 @@ Route::get('/cart/down/{id}', 'App\Http\Controllers\CartController@downQuantify'
 Route::get('/cart/index', 'App\Http\Controllers\CartController@index')->name("cart.index");
 Route::get('/cart/removeAll/', 'App\Http\Controllers\CartController@removeAll')->name("cart.removeAll");
 Route::post('/cart/buy', 'App\Http\Controllers\CartController@buy')->name("cart.buy");
+Route::post('/cart/pdf', 'App\Http\Controllers\CartController@createPDF')->name("cart.pdf");
 Route::get('/admin/accesory/catalogue', 'App\Http\Controllers\Admin\AdminAccesoryController@catalogue')->name("admin.accesory.catalogue");
 Route::get('/admin/accesory/create', 'App\Http\Controllers\Admin\AdminAccesoryController@createAccesory')->name("admin.accesory.create");
 Route::post('/admin/accesory/delete', 'App\Http\Controllers\Admin\AdminAccesoryController@deleteAccesory')->name("admin.accesory.delete");
@@ -61,4 +62,7 @@ Route::post('/admin/accesory/saveEditAccesory', 'App\Http\Controllers\Admin\Admi
 Route::get('/review/{id}', 'App\Http\Controllers\ReviewController@index')->name("review.index");
 Route::post('/review/save', 'App\Http\Controllers\ReviewController@save')->name("review.save");
 Route::get('/review/catalogue/{id}', 'App\Http\Controllers\ReviewController@catalogue')->name("review.catalogue");
+Route::get('/wishlist', 'App\Http\Controllers\WishlistController@index')->name("wishlist.index");
+Route::get('/wishlist/add', 'App\Http\Controllers\WishlistController@add')->name("wishlist.add");
+Route::get('/wishlist/addCart', 'App\Http\Controllers\WishlistController@addCart')->name("wishlist.addCart");
 Auth::routes();

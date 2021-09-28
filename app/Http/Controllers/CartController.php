@@ -7,6 +7,7 @@ use App\Models\Handbag;
 use App\Models\Item;
 use App\Models\Order;
 use App\Models\Accesory;
+use PDF;
 
 class CartController extends Controller
 {
@@ -14,6 +15,7 @@ class CartController extends Controller
     public function index(Request $request)
     {
         $data = [];
+        $data["total"] = 0;
         $ids = $request->session()->get("handbags");
         $quantify = $request->session()->get("quantifyHandbag");
         if ($ids) {
@@ -23,7 +25,6 @@ class CartController extends Controller
         } else {
             $data["handbags"] = array();
             $data["quantifyHandbag"] = array();
-            $data["total"] = 0;
         }
         $ids = $request->session()->get("accesories");
         $quantify = $request->session()->get("quantifyAccesory");
@@ -34,7 +35,9 @@ class CartController extends Controller
         } else {
             $data["accesories"] = array();
             $data["quantifyAccesory"] = array();
+
             $data["total"] = 0;
+
         }
         return view('cart.index')->with("data", $data);
     }
@@ -42,6 +45,9 @@ class CartController extends Controller
     public function removeAll(Request $request)
     {
         $request->session()->forget('handbags');
+        $request->session()->forget('quantifyHandbag');
+        $request->session()->forget('accesories');
+        $request->session()->forget('quantifyAccesory');
         return back();
     }
 
@@ -88,6 +94,7 @@ class CartController extends Controller
     public function buy(Request $request)
     {
         $data = [];
+        $data['items'] = [];
         $request->validate(
             [
                 "address" => "required",
@@ -110,6 +117,7 @@ class CartController extends Controller
                     $item->setHandbagId($handbag->getId());
                     $item->setQuantity($request->session()->get("quantifyHandbag")[$handbag->getId()]);
                     $total = $total + ($handbag->getPrice() * $item->getQuantity());
+                    $data['items'] = array_merge($data['items'], [$item]);
                     $item->save();
                 }
             }
@@ -121,14 +129,33 @@ class CartController extends Controller
                     $item->setAccesoryId($accesory->getId());
                     $item->setQuantity($request->session()->get("quantifyAccesory")[$accesory->getId()]);
                     $total = $total + ($accesory->getPrice() * $item->getQuantity());
+                    $data['items'] = array_merge($data['items'], [$item]);
                     $item->save();
                 }
             }
             $order->setTotalPrice($total);
+            $data['order'] = $order;
+
             $order->save();
-            dd($order->items()->get());
+            $request->session()->forget('handbags');
+            $request->session()->forget('quantifyHandbag');
+            $request->session()->forget('accesories');
+            $request->session()->forget('quantifyAccesory');
+            return view('cart.factura')->with('data', $data);
         } else {
             return back();
         }
+    }
+
+    public function createPDF(Request $request)
+    {
+        $data = [];
+        $orderId = $request->only(['id']);
+        $order = Order::findOrFail($orderId);
+        $data['order'] = $order->first();
+        $data['items'] = [$order->first()->items[0]];
+        view()->share('data', $data);
+        $pdf = PDF::loadView('cart.factura', $data);
+        return $pdf->download('Factura.pdf');
     }
 }

@@ -19,6 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->bigInteger('wishlist_id')->unsigned()->default(null);
+            $table->foreign('wishlist_id')->references('id')->on('wish_lists');
             $table->rememberToken();
             $table->timestamps();
         });
