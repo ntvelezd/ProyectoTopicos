@@ -2,6 +2,15 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+        <div class="col-md-4 col-x1-3">
+            <div class="sidebar px-4 py-md-0">
+                <h6 class="sidebar-title">Search</h6>
+                <form class="input-group" action="{{route('admin.handbag.search')}}" method="GET">
+                    <input type="text" class="form-control" name="search" placeholder="Search">
+
+                </form>
+            </div>
+        </div>
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Handbags List</div>

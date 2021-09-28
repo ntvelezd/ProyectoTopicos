@@ -106,7 +106,7 @@ class Handbag extends Model
 
     public function wishList()
     {
-        return $this->hasMany(WishList::class);
+        return $this->BelongsToMany(WishList::class);
     }
 
     public static function validate(Request $request)
@@ -123,6 +123,7 @@ class Handbag extends Model
             ]
         );
     }
+
 
     public static function validateEdit(Request $request)
     {

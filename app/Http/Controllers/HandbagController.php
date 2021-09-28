@@ -15,7 +15,17 @@ class HandbagController extends Controller
         $data["handbags"] = $handbag;
         return view('handbag.catalogue')->with("data", $data);
     }
-
+    public function search(Request $request){
+        // Get the search value from the request
+        $search = $request->input('search');
+        // Search in the title and body columns from the posts table
+        $handbags = Handbag::query()
+            ->where('name', 'LIKE', "%{$search}%")
+            ->get();
+            $data["handbags"] = $handbags;
+        // Return the search view with the resluts compacted
+        return view('handbag.catalogue')->with("data", $data);
+    }
     public function add($id, Request $request)
     {
         $handbags = $request->session()->get("handbags");
