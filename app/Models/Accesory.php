@@ -13,7 +13,7 @@ class Accesory extends Model
             [
                 "name" => "required",
                 "price" => "required|numeric|gt:0",
-                "profile_image"=>"required"
+                "profile_image" => "required"
             ]
         );
     }
@@ -24,7 +24,7 @@ class Accesory extends Model
             [
                 "name" => "required",
                 "price" => "required|numeric|gt:0",
-                "profile_image"=>"required"
+                "profile_image" => "required"
 
             ]
         );

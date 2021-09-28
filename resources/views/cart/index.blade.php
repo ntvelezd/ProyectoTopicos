@@ -57,7 +57,7 @@
             <hr>
             <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
                 <div class="col">TOTAL PRICE</div>
-                <div class="col text-right">&dollar; {{ $data["total"]}} </div>
+                <div class="col text-right">&dollar; {{ $data["total"] }} </div>
             </div>
             <form method="POST" action="{{ route('cart.buy') }}">
                 @csrf

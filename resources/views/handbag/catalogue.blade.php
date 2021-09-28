@@ -26,10 +26,15 @@
                             <p class="card-text">Score: {{ $handbag->getScore() }}</p>
                             <p class="card-text">Texture: {{ $handbag->getTexture() }}</p>
                         </div>
-                        <button type="submit" class="btn btn-primary" name="" value="">View Details</button>
-                        <a href="{{ route('handbag.add', ['id'=> $handbag->getId()]) }}" class="btn btn-primary" role="button" aria-pressed="true">Add Cart</a>
-                        <a href="{{ route('review.index', ['id'=> $handbag->getId()]) }}" class="btn btn-primary" role="button" aria-pressed="true"> Create Review</a>
-                        <a href="{{ route('review.catalogue', ['id'=> $handbag->getId()]) }}" class="btn btn-primary" role="button" aria-pressed="true"> See Review</a>
+                        <div class="d-flex justify-content-around">
+                            <button type="submit" class="btn btn-primary m-1" name="" value="">View Details</button>
+                            <a href="{{ route('handbag.add', ['id'=> $handbag->getId()]) }}" class="btn btn-primary m-1"
+                                role="button" aria-pressed="true">Add Cart</a>
+                            <a href="{{ route('review.index', ['id'=> $handbag->getId()]) }}" class="btn btn-primary m-1"
+                                role="button" aria-pressed="true"> Create Review</a>
+                            <a href="{{ route('review.catalogue', ['id'=> $handbag->getId()]) }}"
+                                class="btn btn-primary m-1" role="button" aria-pressed="true"> See Review</a>
+                        </div>
                     </div>
                 </div>
                 @endforeach
