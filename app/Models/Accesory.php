@@ -7,31 +7,8 @@ use illuminate\Database\Eloquent\Model;
 
 class Accesory extends Model
 {
-    public static function validate(Request $request)
-    {
-        $request->validate(
-            [
-                "name" => "required",
-                "price" => "required|numeric|gt:0",
-                "profile_image" => "required"
-            ]
-        );
-    }
 
-    public static function validateEdit(Request $request)
-    {
-        $request->validate(
-            [
-                "name" => "required",
-                "price" => "required|numeric|gt:0",
-                "profile_image" => "required"
-
-            ]
-        );
-    }
-
-    //attributes name,price
-
+    //attributes name,price,image
 
     protected $fillable = ['name','price','image'];
 
@@ -78,6 +55,17 @@ class Accesory extends Model
     public function items()
     {
         return $this->HasMany(Item::class);
+    }
+
+    public static function validate(Request $request)
+    {
+        $request->validate(
+            [
+                "name" => "required",
+                "price" => "required|numeric|gt:0",
+                "profile_image" => "required"
+            ]
+        );
     }
 
     public static function totalValue($accesories)
