@@ -35,6 +35,9 @@ class CartController extends Controller
         } else {
             $data["accesories"] = array();
             $data["quantifyAccesory"] = array();
+
+            $data["total"] = 0;
+
         }
         return view('cart.index')->with("data", $data);
     }
@@ -132,7 +135,6 @@ class CartController extends Controller
             }
             $order->setTotalPrice($total);
             $data['order'] = $order;
-
             $order->save();
             $request->session()->forget('handbags');
             $request->session()->forget('quantifyHandbag');
