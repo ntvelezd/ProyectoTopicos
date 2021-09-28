@@ -19,7 +19,6 @@ class ReviewController extends Controller
 
     public function save(Request $request)
     {
-        //Accesory::validate($request);
         Review::create([
             'score' => $request->only(["score"])["score"],
             'comentary' => $request->only(["comentary"])["comentary"],

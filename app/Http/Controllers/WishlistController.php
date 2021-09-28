@@ -15,21 +15,20 @@ class WishlistController extends Controller
 
     public function index()
     {
-        $wishlist=  WishList::find(auth()->user()->getWishlist());
-        if ($wishlist){
-            $data["handbags"]=$wishlist->handbags()->get();
-            return view('wishlist.index')->with('data',$data);
+        $wishlist =  WishList::find(auth()->user()->getWishlist());
+        if ($wishlist) {
+            $data["handbags"] = $wishlist->handbags()->get();
+            return view('wishlist.index')->with('data', $data);
         }
-        $data["handbags"]=array();
-        return view('wishlist.index')->with('data',$data);
-
+        $data["handbags"] = array();
+        return view('wishlist.index')->with('data', $data);
     }
 
     public function add($id)
     {
-        $wishlistid= auth()->user()->getWishlist();
-        $wishlist= WishList::find($wishlistid);
-        if (is_null($wishlist)){
+        $wishlistid = auth()->user()->getWishlist();
+        $wishlist = WishList::find($wishlistid);
+        if (is_null($wishlist)) {
             $wishlist = new Wishlist();
             $wishlist->setUserId(auth()->user()->getId());
             $wishlist->save();
@@ -38,8 +37,8 @@ class WishlistController extends Controller
             auth()->user()->save();
             return back();
         }
-        foreach ($wishlist->handbags()->get() as $handbag){
-            if($handbag->getId()==$id){
+        foreach ($wishlist->handbags()->get() as $handbag) {
+            if ($handbag->getId() == $id) {
                 return back();
             }
         }
@@ -48,16 +47,16 @@ class WishlistController extends Controller
         return back();
     }
 
-    public function addCart(Request $request )
+    public function addCart(Request $request)
     {
-        $wishlistid= auth()->user()->getWishlist();
-        $wishlist= WishList::find($wishlistid);
-        if (is_null($wishlist)){
+        $wishlistid = auth()->user()->getWishlist();
+        $wishlist = WishList::find($wishlistid);
+        if (is_null($wishlist)) {
             return back();
         }
         $handbags = $request->session()->get("handbags");
         $quantify = $request->session()->get("quantifyHandbag");
-        foreach ($wishlist->handbags()->get() as $handbag){
+        foreach ($wishlist->handbags()->get() as $handbag) {
             $handbags[$handbag->getId()] = $handbag->getId();
             $quantify[$handbag->getId()] = 1;
         }

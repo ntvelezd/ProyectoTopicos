@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
 <main role="main">
     <div class="album py-5 bg-light">
         <div class="container">
@@ -8,6 +7,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="card mb-4 box-shadow">
+
                     <img class="img-fluid rounded mb-5" src="{{  URL::asset('storage/handbags/'.$data["best-handbag"]->first()->getImage()) }}" alt="" />
                             <p class="card-text">{{__('admin.name')}}{{$data["best-handbag"]->first()->getName() }}</p>
                             <p class="card-text">{{__('admin.price')}} {{$data["best-handbag"]->first()->getPrice() }}</p>
@@ -26,11 +26,9 @@
             <form class="input-group" action="{{route('handbag.search')}}" method="GET">
                 <input type="text" class="form-control" name="search" placeholder="Search">
             </form>
-        </div>
-   
 
-    <div class="album py-5 bg-light">
-        <div class="container">
+        </div>
+    </div>
     <div class="album py-5 bg-light">
         <div class="container">
             <h5>Catalogue:</h5>
@@ -38,8 +36,8 @@
                 @foreach($data["handbags"] as $key => $handbag)
                 <div class="col-md-4">
                     <div class="card mb-4 box-shadow">
-
-                        <img class="img-fluid rounded mb-5" src="{{  URL::asset('storage/handbags/'.$handbag->getImage()) }}" alt="" />
+                        <img class="img-fluid rounded mb-5"
+                            src="{{  URL::asset('storage/handbags/'.$handbag->getImage()) }}" alt="" />
                         <div class="card-body">
                             <p class="card-text">{{__('admin.name')}} {{ $handbag->getName() }}</p>
                             <p class="card-text">{{__('admin.price')}} {{ $handbag->getPrice() }}</p>
@@ -48,13 +46,6 @@
                             <p class="card-text">{{__('admin.score')}} {{ $handbag->getScore() }}</p>
                             <p class="card-text">{{__('admin.texture')}} {{ $handbag->getTexture() }}</p>
                         </div>
-
-                        <button type="submit" class="btn btn-primary" name="" value="">{{__('handbag.view')}}</button>
-                        <a href="{{ route('handbag.add', ['id'=> $handbag->getId()]) }}" class="btn btn-primary" role="button" aria-pressed="true">{{__('handbag.cart')}}</a>
-                        <a href="{{ route('review.index', ['id'=> $handbag->getId()]) }}" class="btn btn-primary" role="button" aria-pressed="true"> {{__('handbag.review')}}</a>
-                        <a href="{{ route('review.catalogue', ['id'=> $handbag->getId()]) }}" class="btn btn-primary" role="button" aria-pressed="true"> {{__('handbag.see')}}</a>
-                        <a href="{{ route('wishlist.add' ,['id'=> $handbag->getId()]) }}" class="btn btn-primary" role="button" aria-pressed="true"> {{__('handbag.wishlist')}}</a>
-
                         <div class="d-flex justify-content-around">
                             <button type="submit" class="btn btn-primary m-1" name="" value="">{{__('admin.details')}}</button>
                             <a href="{{ route('handbag.add', ['id'=> $handbag->getId()]) }}" class="btn btn-primary m-1"
@@ -64,7 +55,10 @@
                             <a href="{{ route('review.catalogue', ['id'=> $handbag->getId()]) }}"
                                 class="btn btn-primary m-1" role="button" aria-pressed="true"> {{__('review.see')}}</a>
                         </div>
-
+                        <div class="d-flex justify-content-around">
+                            <a href="{{ route('wishlist.add', ['id'=> $handbag->getId()]) }}" class="btn btn-primary m-1"
+                                role="button" aria-pressed="true"> Add to Wishlist</a>
+                        </div>
                     </div>
                 </div>
                 @endforeach
@@ -75,10 +69,11 @@
 <!-- Bootstrap core JavaScript
     ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
 </script>
 <script>
-    window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')
+window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')
 </script>
 <script src="../../assets/js/vendor/popper.min.js"></script>
 <script src="../../dist/js/bootstrap.min.js"></script>

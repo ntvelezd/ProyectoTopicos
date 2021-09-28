@@ -39,7 +39,6 @@ class AdminHandbagController extends Controller
 
     public function saveHandbag(Request $request)
     {
-
         $storeInterface = app(ImageStorage::class);
         $storeInterface->store($request);
         Handbag::create([
@@ -73,7 +72,6 @@ class AdminHandbagController extends Controller
 
     public function saveEditHandbag(Request $request)
     {
-
         $storeInterface = app(ImageStorage::class);
         $storeInterface->store($request);
         Handbag::validate($request);
@@ -84,10 +82,11 @@ class AdminHandbagController extends Controller
         $data['title'] = 'Save Handbag';
         return view('admin.handbag.saveEditHandbag')->with("data", $data);
     }
+
     public function deleteHandbag(Request $request)
     {
         $reviews = Handbag::findOrFail($request['id'])->reviews()->get();
-        foreach($reviews as $review){
+        foreach ($reviews as $review) {
             $review -> delete();
         }
         Handbag::destroy($request->only(["id"]));

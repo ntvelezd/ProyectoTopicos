@@ -8,9 +8,6 @@
             <p>{{__('cart.dir2')}}</p>
             <p>{{__('cart.dir3')}}</p>
         </div>
-        <div class="col-2">
-            <img src="~/images/Mil-Pasos_Negro.png" />
-        </div>
     </div>
     <hr />
     <table class="table table-borderless factura">

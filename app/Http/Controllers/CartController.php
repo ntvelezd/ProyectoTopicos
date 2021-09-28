@@ -35,9 +35,7 @@ class CartController extends Controller
         } else {
             $data["accesories"] = array();
             $data["quantifyAccesory"] = array();
-
             $data["total"] = 0;
-
         }
         return view('cart.index')->with("data", $data);
     }
