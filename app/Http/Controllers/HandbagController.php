@@ -19,6 +19,7 @@ class HandbagController extends Controller
             ->orderByRaw('COUNT(*) DESC')
             ->limit(1)
             ->get();
+<<<<<<< Updated upstream
         $data["best-handbag"]= Handbag::findOrFail($bestHandbag);
         //dd($data["best-handbag"]->first()->getName());
         return view('handbag.catalogue')->with("data", $data);
@@ -26,15 +27,33 @@ class HandbagController extends Controller
     public function search(Request $request)
     {
         // Get the search value from the request
-        $search = $request->input('search');
-        // Search in the title and body columns from the posts table
-        $handbags = Handbag::query()
-            ->where('name', 'LIKE', "%{$search}%")
-            ->get();
-        $data["handbags"] = $handbags;
-        // Return the search view with the resluts compacted
+=======
+        $data["best-handbag"] = Handbag::findOrFail($bestHandbag);
         return view('handbag.catalogue')->with("data", $data);
     }
+
+    public function search(Request $request)
+    {
+>>>>>>> Stashed changes
+        $search = $request->input('search');
+        $handbags = Handbag::query()
+        ->where('name', 'LIKE', "%{$search}%")
+        ->get();
+        $data["handbags"] = $handbags;
+        $bestHandbag = Item::select('handbag_id')
+            ->groupBy('handbag_id')
+            ->orderByRaw('COUNT(*) DESC')
+            ->limit(1)
+            ->get();
+<<<<<<< Updated upstream
+        $data["handbags"] = $handbags;
+        // Return the search view with the resluts compacted
+=======
+        $data["best-handbag"] = Handbag::findOrFail($bestHandbag);
+>>>>>>> Stashed changes
+        return view('handbag.catalogue')->with("data", $data);
+    }
+
     public function add($id, Request $request)
     {
         $handbags = $request->session()->get("handbags");
