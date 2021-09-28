@@ -7,8 +7,8 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="card mb-4 box-shadow">
-
-                    <img class="img-fluid rounded mb-5" src="{{  URL::asset('storage/handbags/'.$data["best-handbag"]->first()->getImage()) }}" alt="" />
+                    @if(!is_null($data['best-handbag']->first()))
+                    <img class="img-fluid rounded mb-5" src="{{  URL::asset('storage/handbags/'.$data['best-handbag']->first()->getImage()) }}" alt="" />
                             <p class="card-text">{{__('admin.name')}}{{$data["best-handbag"]->first()->getName() }}</p>
                             <p class="card-text">{{__('admin.price')}} {{$data["best-handbag"]->first()->getPrice() }}</p>
                             <p class="card-text">{{__('admin.style')}} {{$data["best-handbag"]->first()->getStyle() }}</p>
@@ -17,6 +17,7 @@
                             <p class="card-text">{{__('admin.texture')}} {{$data["best-handbag"]->first()->getTexture() }}</p>
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
 
