@@ -19,22 +19,12 @@ class HandbagController extends Controller
             ->orderByRaw('COUNT(*) DESC')
             ->limit(1)
             ->get();
-<<<<<<< Updated upstream
-        $data["best-handbag"]= Handbag::findOrFail($bestHandbag);
-        //dd($data["best-handbag"]->first()->getName());
-        return view('handbag.catalogue')->with("data", $data);
-    }
-    public function search(Request $request)
-    {
-        // Get the search value from the request
-=======
         $data["best-handbag"] = Handbag::findOrFail($bestHandbag);
         return view('handbag.catalogue')->with("data", $data);
     }
 
     public function search(Request $request)
     {
->>>>>>> Stashed changes
         $search = $request->input('search');
         $handbags = Handbag::query()
         ->where('name', 'LIKE', "%{$search}%")
@@ -45,12 +35,7 @@ class HandbagController extends Controller
             ->orderByRaw('COUNT(*) DESC')
             ->limit(1)
             ->get();
-<<<<<<< Updated upstream
         $data["handbags"] = $handbags;
-        // Return the search view with the resluts compacted
-=======
-        $data["best-handbag"] = Handbag::findOrFail($bestHandbag);
->>>>>>> Stashed changes
         return view('handbag.catalogue')->with("data", $data);
     }
 
@@ -64,5 +49,4 @@ class HandbagController extends Controller
         $request->session()->put('quantifyHandbag', $quantify);
         return back();
     }
-    
 }

@@ -19,6 +19,7 @@ class HomeController extends Controller
         $data['message'] = '';
         return redirect()->route('home.index')->with("data", $data);
     }
+
     public function portfolio()
     {
         $handbag = Handbag::all();

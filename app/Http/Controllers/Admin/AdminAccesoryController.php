@@ -37,7 +37,6 @@ class AdminAccesoryController extends Controller
 
     public function saveAccesory(Request $request)
     {
-
         $storeInterface = app(ImageStorage::class);
         $storeInterface->storeAccesory($request);
         Accesory::validate($request);

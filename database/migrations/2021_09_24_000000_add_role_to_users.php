@@ -15,6 +15,8 @@ class AddRoleToUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->boolean('is_admin')->nullable();
+            $table->bigInteger('wishlist_id')->unsigned()->nullable();
+            $table->foreign('wishlist_id')->references('id')->on('wish_lists');
         });
     }
 
