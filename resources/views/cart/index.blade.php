@@ -15,7 +15,7 @@
             @foreach($data["handbags"] as $key => $handbag)
             <div class="row border-top border-bottom">
                 <div class="row main align-items-center">
-                    <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/1GrakTl.jpg"></div>
+                    <div class="col-2"><img class="img-fluid" src="{{URL::asset('storage/handbags/'.$handbag->getImage())}}"></div>
                     <div class="col">
                         <div class="row text-muted">{{__('cart.bag')}}</div>
                         <div class="row">{{ $handbag->getName() }}</div>
@@ -32,7 +32,7 @@
             @foreach($data["accesories"] as $key => $accesory)
             <div class="row border-top border-bottom">
                 <div class="row main align-items-center">
-                    <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/1GrakTl.jpg"></div>
+                    <div class="col-2"><img class="img-fluid" src="{{URL::asset('storage/accesories/'.$accesory->getImage())}}"></div>
                     <div class="col">
                         <div class="row text-muted">{{__('cart.accesory')}}</div>
                         <div class="row">{{ $accesory->getName() }}</div>
