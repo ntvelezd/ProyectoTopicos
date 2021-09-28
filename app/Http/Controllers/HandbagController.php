@@ -19,7 +19,7 @@ class HandbagController extends Controller
             ->orderByRaw('COUNT(*) DESC')
             ->limit(1)
             ->get();
-        $data["best-handbag"] = Handbag::findOrFail($bestHandbag);
+        $data["best"] = Handbag::findOrFail($bestHandbag);
         return view('handbag.catalogue')->with("data", $data);
     }
 
