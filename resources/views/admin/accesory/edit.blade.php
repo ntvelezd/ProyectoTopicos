@@ -5,9 +5,9 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{__('admin.view')}}</div>
-
                 <div class="card-body">
-                    <form method="POST" action="{{ route('admin.accesory.saveEditAccesory') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('admin.accesory.saveEditAccesory') }}"
+                        enctype="multipart/form-data">
                         @csrf
                         <input type="text" name="id" value="{{ $data['Accesory']->getId()}}" hidden>
                         <div class="form-group">
@@ -24,7 +24,6 @@
                             <label>{{__('admin.images')}}</label>
                             <input type="file" name="profile_image" />
                         </div>
-
                         <button type="submit" class="btn btn-primary">{{__('admin.changes')}}</button>
                     </form>
                 </div>

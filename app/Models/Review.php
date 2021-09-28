@@ -68,4 +68,14 @@ class Review extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public static function validate(Request $request)
+    {
+        $request->validate(
+            [
+                "score" => "required|numeric|between:0,5",
+                "commentary" => "required",
+            ]
+        );
+    }
 }

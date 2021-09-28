@@ -4,5 +4,4 @@
     <input type="text" name="search" required />
     <button type="submit">{{__('admin.search')}}</button>
 </form>
- 
 @endsection

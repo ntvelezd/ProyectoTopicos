@@ -5,9 +5,8 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{__('admin.view')}}</div>
-
                 <div class="card-body">
-                {{__('admin.save')}}
+                    {{__('admin.save')}}
                 </div>
             </div>
         </div>

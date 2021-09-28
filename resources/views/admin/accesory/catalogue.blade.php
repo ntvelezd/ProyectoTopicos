@@ -7,10 +7,8 @@
                 @foreach($data["Accesory"] as $accesory)
                 <div class="col-md-4">
                     <div class="card mb-4 box-shadow">
-
-                    <img class="img-fluid rounded mb-5" src="{{  URL::asset('storage/accesories/'.$accesory->getImage()) }}" alt="" />
-
-
+                        <img class="img-fluid rounded mb-5"
+                            src="{{  URL::asset('storage/accesories/'.$accesory->getImage()) }}" alt="" />
                         <div class="card-body">
                             <p class="card-text">{{__('admin.name')}} {{ $accesory->getName() }}</p>
                             <p class="card-text">{{__('admin.price')}} {{ $accesory->getPrice() }}</p>
@@ -20,11 +18,10 @@
                                     <button type="submit" class="btn btn-primary" name="id"
                                         value="{{ ($accesory->getId()) }}">{{__('admin.del')}}</button>
                                 </form>
-                                
-                                <a href="{{ route('admin.accesory.edit', ['id'=> $accesory->getId()]) }}" class="btn btn-primary" role="button" aria-pressed="true">{{__('admin.edi')}}</a>
+                                <a href="{{ route('admin.accesory.edit', ['id'=> $accesory->getId()]) }}"
+                                    class="btn btn-primary" role="button" aria-pressed="true">{{__('admin.edi')}}</a>
                             </div>
                         </div>
-                                
                     </div>
                 </div>
                 @endforeach

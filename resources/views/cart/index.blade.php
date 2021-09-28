@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
 <link href="{{ asset('/css/cartstyles.css') }}" rel="stylesheet" />}
 <div class="card1 mb-4">
     <div class="row">
