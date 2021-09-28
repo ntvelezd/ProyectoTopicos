@@ -65,6 +65,7 @@ return [
     'accesso'=>'Create Accesory',
     'details'=>'View Details',
     'add'=>'Add Cart',
+    'most'=>'Most sold Handbag:'
 
 
 
