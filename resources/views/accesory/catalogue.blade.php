@@ -13,8 +13,11 @@
                             <p class="card-text">Name: {{ $accesory->getName() }}</p>
                             <p class="card-text">Price: {{ $accesory->getPrice() }}</p>
                         </div>
-                        <button type="submit" class="btn btn-primary" name="" value="">View Details</button>
-                        <a href="{{ route('accesory.add', ['id'=> $accesory->getId()]) }}">Add Cart</a>
+                        <div class="d-flex justify-content-around">
+                            <button type="submit" class="btn btn-primary m-1" name="" value="">View Details</button>
+                            <a href="{{ route('accesory.add', ['id'=> $accesory->getId()]) }}"
+                                class="btn btn-primary m-1">Add Cart</a>
+                        </div>
                     </div>
                 </div>
                 @endforeach

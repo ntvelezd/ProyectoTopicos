@@ -20,7 +20,7 @@
                             <div class="d-flex justify-content-between align-items-center">
 
 
-                                <a href="edit/{{$handbag->getId()}}" class="btn btn-primary" role="button" aria-pressed="true">Edit</a>
+                                <a href="edit/{{$handbag->getId()}}" class="btn btn-primary m-1" role="button" aria-pressed="true">Edit</a>
                                 <form method="POST" action="{{ route('admin.handbag.delete') }}">
                                     @csrf
                                     <button type="submit" class="btn btn-primary" name="id" value="{{ ($handbag->getId()) }}">Delete</button>

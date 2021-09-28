@@ -7,7 +7,6 @@ use App\Models\Handbag;
 use App\Models\Review;
 use App\Models\User;
 
-
 class ReviewController extends Controller
 {
 
@@ -20,7 +19,6 @@ class ReviewController extends Controller
 
     public function save(Request $request)
     {
-       
         //Accesory::validate($request);
         Review::create([
             'score' => $request->only(["score"])["score"],
@@ -30,14 +28,13 @@ class ReviewController extends Controller
         ]);
         $message = 'Accesorio editado satisfactoriamente';
         return view('review.save')->with("message", $message);
-
     }
 
     public function catalogue($id)
     {
-       $handbag= Handbag::findOrFail($id);
-       $data["review"]=$handbag->reviews()->get();
-       $data["handbag"]=$handbag;
-       return view('review.catalogue')->with("data",$data);
+        $handbag = Handbag::findOrFail($id);
+        $data["review"] = $handbag->reviews()->get();
+        $data["handbag"] = $handbag;
+        return view('review.catalogue')->with("data", $data);
     }
 }
