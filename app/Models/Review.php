@@ -3,8 +3,6 @@
 namespace App\Models;
 
 use illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
-
 
 class Review extends Model
 {
@@ -76,7 +74,7 @@ class Review extends Model
         $request->validate(
             [
                 "score" => "required|numeric|between:0,5",
-                "comentary" => "required",
+                "commentary" => "required",
             ]
         );
     }

@@ -14,6 +14,8 @@
                             <p class="card-text">{{__('admin.price')}}{{ $accesory->getPrice() }}</p>
                         </div>
                         <div class="d-flex justify-content-around">
+                            <button type="submit" class="btn btn-primary m-1" name=""
+                                value="">{{__('admin.details')}}</button>
                             <a href="{{ route('accesory.add', ['id'=> $accesory->getId()]) }}"
                                 class="btn btn-primary m-1">{{__('admin.add')}}</a>
                         </div>
